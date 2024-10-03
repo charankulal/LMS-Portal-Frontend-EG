@@ -13,9 +13,9 @@ export class LoginService {
 
   public loginStatusSubject=new Subject<boolean>();
 
-  public getCurrentUser(requestHeader:any)
+  public getCurrentUser(requestHeader:any,email:any)
   {
-    return this.http.get(`${baseUrl}/current-user`,requestHeader)
+    return this.http.get(`${baseUrl}/api/users/email?email=${email}`,requestHeader)
   }
 
   // login post request
@@ -28,7 +28,7 @@ export class LoginService {
 
   public loginUser(token:any)
   {
-    localStorage.setItem('token',token)
+    window.localStorage.setItem('token',token)
 
     return true;
   }
@@ -89,6 +89,6 @@ export class LoginService {
   public getUserRole()
   {
     let user=this.getUser()
-    return user.authorities[0].authority
+    return user.role
   }
 }
