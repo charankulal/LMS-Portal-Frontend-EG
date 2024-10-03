@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helpers';
+import { isPlatformBrowser } from '@angular/common';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +11,17 @@ export class LoginService {
 
   constructor(private http:HttpClient) {  }
 
+  public loginStatusSubject=new Subject<boolean>();
+
   public getCurrentUser(requestHeader:any)
   {
     return this.http.get(`${baseUrl}/current-user`,requestHeader)
   }
 
-  //generate token
-
-  public generateToken(loginData:any)
+  // login post request
+  public loginPostRequest(loginData:any)
   {
-    return this.http.post(`${baseUrl}/generate-token`,loginData)
+    return this.http.post(`${baseUrl}/api/authorize/login`,loginData)
   }
 
   //login user : store the token in localstorage
