@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-
 export class LoginComponent implements OnInit{
   loginData={
     email:'',
@@ -37,7 +36,6 @@ export class LoginComponent implements OnInit{
         horizontalPosition:'center',})
         return;
     }
-
     if(this.loginData.password.trim()=='' || this.loginData.password==null)
     {
       this.snack.open("Password is required!!",'OK',{
@@ -46,13 +44,10 @@ export class LoginComponent implements OnInit{
         horizontalPosition:'center',})
         return;
     }
-    
-    // request to server to generate token
+    // request to server to log in
     this.login.loginPostRequest(this.loginData).subscribe(
       (data:any)=>{
-        // console.log(data)
-        // console.log(data.token)
-        let token=data.token
+      
         const headerDict = {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -61,11 +56,11 @@ export class LoginComponent implements OnInit{
         const requestOptions = {
           headers: new Headers(headerDict),
         };
-        // login
+        
 
 
-        this.login.loginUser(token)
-        this.login.getCurrentUser(requestOptions).subscribe(
+        this.login.loginUser(this.loginData.email)
+        this.login.getCurrentUser(requestOptions,this.loginData.email).subscribe(
           (user:any)=>{
             this.login.setUser(user)
             // console.log(user)
@@ -73,10 +68,11 @@ export class LoginComponent implements OnInit{
             //redirect if user is admin redirect to admin dashboard
             //redirect if user is normal user then redirect to user dashboard
 
-            if(this.login.getUserRole()=="ADMIN")
+            if(this.login.getUserRole()=="Admin")
             {
               // route to admin dashboard
               // window.location.href='/admin'
+              console.log(this.login.getUserRole())
               this.router.navigate(['/admin'])
               this.login.loginStatusSubject.next(true)
             }
@@ -100,6 +96,7 @@ export class LoginComponent implements OnInit{
 
 
       },(error)=>{
+        console.log(error)
         // alert("Error occurred")
         this.snack.open("Invalid Credentials!! Try Again",'OK',{
           duration:3000,
