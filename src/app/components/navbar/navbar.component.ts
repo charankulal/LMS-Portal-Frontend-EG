@@ -8,12 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink,MatIconModule,MatToolbarModule],
+  imports: [RouterLink,MatIconModule,MatToolbarModule,NgIf],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
