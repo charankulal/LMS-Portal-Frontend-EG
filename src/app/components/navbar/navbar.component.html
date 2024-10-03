@@ -1,0 +1,47 @@
+<p>
+  <mat-toolbar color="secondary">
+    <button
+      mat-icon-button
+      class="example-icon"
+    >
+      <mat-icon>menu_book</mat-icon>
+    </button>
+    <a routerLink="/" class="nav-heading mx-2 text-decoration-none">Learning Management System</a>
+    <span class="example-spacer"></span>
+    <a
+    *ngIf="!login.isLoggedIn()"
+      [routerLink]="'/login'"
+      mat-icon-button
+      class="example-icon favorite-icon"
+    >
+      <span class="nav-btn-title">Login</span>
+    </a>
+    <a
+    *ngIf="!login.isLoggedIn()"
+      [routerLink]="'/signup'"
+      mat-icon-button
+      class="example-icon"
+    >
+      <span class="nav-btn-title">Sign Up</span>
+    </a>
+    <a
+    *ngIf="login.isLoggedIn()"
+      [routerLink]="['/admin/profile']"
+      mat-icon-button
+      class="example-icon"
+    >
+      <span class="nav-btn-title">{{login.getUser().firstName}} {{login.getUser().lastName}}</span>
+    </a>
+    <a
+    *ngIf="login.isLoggedIn()"
+    (click)="logout()"
+      [routerLink]="''"
+      mat-icon-button
+      class="example-icon"
+    >
+      <span class="nav-btn-title">Logout</span>
+    </a>
+
+  </mat-toolbar>
+</p>
+  

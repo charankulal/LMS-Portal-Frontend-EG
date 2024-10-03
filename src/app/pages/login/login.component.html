@@ -1,0 +1,51 @@
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 my-5">
+          <mat-card class="bg-warning">
+        
+          <h1 class="text-center my-3">Login Here!!</h1>
+          <form (ngSubmit)="formSubmit()" >
+            <!-- {{loginData.username}}
+            {{loginData.password}} -->
+            <!-- UserName Field -->
+            <mat-form-field class="full-width margin col-md-6 offset-md-3 my-3 " appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+              required
+                matInput
+                placeholder="Enter Email"
+                name="email"
+                type="email"
+                [(ngModel)]="loginData.email"
+                [ngModelOptions]="{ standalone: true }"
+              />
+              <mat-hint>Email should be valid</mat-hint>
+            </mat-form-field>
+  
+            <!-- Password fiekd -->
+            <mat-form-field class="full-width margin col-md-6 offset-md-3 my-3" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input required type="password" matInput placeholder="Enter Password"
+              name="password"
+              autocomplete="current-password"
+              [(ngModel)]="loginData.password"
+              [ngModelOptions]="{ standalone: true }"
+                />
+            </mat-form-field>
+  
+  
+            <div class="container text-center margin my-3">
+              <button type="submit" mat-raised-button color="primary" class="mx-2">
+                Login
+              </button>
+              <button type="reset" mat-raised-button color="accent" class="margin-left" >
+                Clear
+              </button>
+            </div>
+          </form>
+        </mat-card>
+        </div>
+  
+      </div>
+    </div>
