@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit{
         const headerDict = {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Access-Control-Allow-Headers': 'Content-Type',
         }
         const requestOptions = {
           headers: new Headers(headerDict),
@@ -76,11 +75,11 @@ export class LoginComponent implements OnInit{
               this.router.navigate(['/admin-dashboard'])
               this.login.loginStatusSubject.next(true)
             }
-            else if(this.login.getUserRole()=="NORMAL")
+            else if(this.login.getUserRole()=="Instructor")
             {
               // route to users dashboard
               // window.location.href='/user-dashboard'
-              this.router.navigate(['/user-dashboard/0'])
+              this.router.navigate(['/instructor-dashboard'])
               this.login.loginStatusSubject.next(true)
             }
             else
