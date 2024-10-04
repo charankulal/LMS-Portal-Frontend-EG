@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -8,23 +10,15 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
+  constructor(private login:LoginService,private router:Router) {}
+  ngOnInit(): void {
+    if(!this.login.isLoggedIn() || this.login.getUserRole()!="Admin")
+    {
+      this.login.logout()
+      this.router.navigate(['/login'])
+    }
+  }
 }
 
-// import { Component } from '@angular/core';
-// import { MatCardModule } from '@angular/material/card';
-// import { MatIconModule } from '@angular/material/icon';
-// import { MatGridListModule } from '@angular/material/grid-list';
-// import { BrowserModule } from '@angular/platform-browser';
-
-// @Component({
-//   selector: 'app-dashboard',
-//   standalone: true,  // You can keep this if you're using standalone components
-//   imports: [MatCardModule, MatIconModule, BrowserModule, MatGridListModule],
-//   templateUrl: './dashboard.component.html',
-//   styleUrls: ['./dashboard.component.css'],  // Corrected typo from styleUrl to styleUrls
-// })
-// export class DashboardComponent {
-//   // Your component logic here
-// }
