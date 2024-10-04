@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink,MatIconModule,MatToolbarModule,NgIf],
+  imports: [RouterLink,MatIconModule,MatToolbarModule,NgIf,MatButtonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

@@ -1,0 +1,19 @@
+.nav-btn-title{
+    margin-left: 360px;
+    border-radius: 10px;
+    background-color: black;
+    width: 90px;
+    color: white;
+   text-decoration: none;
+   display: inline-block;
+   justify-content: center; 
+  align-items: center; 
+  text-align: center;
+}
+.login-btn{
+  left: 50rem;
+}
+.right{
+  position: absolute;
+  left: 45rem;
+}
