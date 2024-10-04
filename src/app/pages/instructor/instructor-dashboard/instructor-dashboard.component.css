@@ -1,0 +1,42 @@
+
+.h-100{
+    height: 10rem !important;
+}
+
+.icon{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    
+}
+.bg-grey{
+    background-color: rgb(204, 239, 247);
+}
+
+.offset-1{
+    position: absolute;
+    left: 6%;
+}
+
+.add{
+    position: absolute !important;
+    
+    top: 72%;
+    left: 30%;
+    
+}
+.view{
+    position: absolute !important;
+    
+    top: 72%;
+    right: 30%;
+    
+}
+
+.btns{
+    height: 100px;
+    width: 200px;
+    background-color: rgb(26, 142, 250);
+    font-size: large;
+    
+}
