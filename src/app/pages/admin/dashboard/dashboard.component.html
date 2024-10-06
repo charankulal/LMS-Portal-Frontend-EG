@@ -1,39 +1,51 @@
 
-<h1><b>Welcome Admin!</b></h1>
 
-<div class="container offset-md-1">
-  <!-- First Row -->
-  <div class="row offset-1">
-    <mat-card  class="col-md-5 m-2 h-100 bg-grey" >
-      <mat-card-title class="text-dark mt-4 fs-4">
-        Number of Batches
-        <mat-icon class="icon">group</mat-icon>
-      </mat-card-title>
-    </mat-card>
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2></h2>
+    <ul>
+      <li><a [href]="['/create-trainee']"><div class="add" >
+        <button mat-stroked-button class="btns btn-primary text-light">Create Trainee</button>
+      </div></a></li>
+      <li><a [href]="['/view-all-trainees']"><div class="view" >
+        <button mat-stroked-button class="btns btn-primary text-light">View All Trainees</button>
+      </div></a></li>
+     
+    </ul>
+  </div>
 
-    <mat-card color="primary" class="col-md-5 m-2 h-100 bg-grey">
-      <mat-card-title class="text-dark mt-4 fs-4">
-        Number of Trainees
-        <mat-icon class="icon">groups</mat-icon>
-      </mat-card-title>
-    </mat-card>
-  
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="head"><b>Welcome {{this.login.getUser().fullName}}!</b></h1>
+    <div class="row offset-1">
+      <mat-card class="col-md-5 m-2 h-100 bg-grey">
+        <mat-card-title class="text-dark mt-4 fs-4">
+          Number of Batches
+          <mat-icon class="icon">group</mat-icon>
+        </mat-card-title>
+      </mat-card>
 
-    <mat-card color="primary " class="col-md-5 m-2 h-100 bg-grey">
-      <mat-card-title class="text-dark mt-4 fs-4">
-        Number of Instructors
-        <mat-icon class="icon">person</mat-icon>
-      </mat-card-title>
-    </mat-card>
+      <mat-card class="col-md-5 m-2 h-100 bg-grey">
+        <mat-card-title class="text-dark mt-4 fs-4">
+          Number of Trainees
+          <mat-icon class="icon">groups</mat-icon>
+        </mat-card-title>
+      </mat-card>
 
-    <mat-card color="primary" class="col-md-5 m-2 h-100 bg-grey">
-      <mat-card-title class="text-dark mt-4 fs-4">
-        Number of Certified
-        <mat-icon class="icon">verified</mat-icon>
-      </mat-card-title>
-    </mat-card>
+      <mat-card class="col-md-5 m-2 h-100 bg-grey">
+        <mat-card-title class="text-dark mt-4 fs-4">
+          Number of Instructors
+          <mat-icon class="icon">person</mat-icon>
+        </mat-card-title>
+      </mat-card>
+
+      <mat-card class="col-md-5 m-2 h-100 bg-grey">
+        <mat-card-title class="text-dark mt-4 fs-4">
+          Number of Certified
+          <mat-icon class="icon">verified</mat-icon>
+        </mat-card-title>
+      </mat-card>
+    </div>
   </div>
 </div>
-
-
-

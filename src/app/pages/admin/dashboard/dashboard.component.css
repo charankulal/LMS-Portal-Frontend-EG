@@ -16,3 +16,85 @@
     position: absolute;
     left: 6%;
 }
+
+
+  /* Sidebar */
+  .head{
+    text-align: center;
+ }
+.sidebar {
+    width: 200px; /* Width of the sidebar */
+    background-color: rgb(242, 243, 244); /* Background color */
+    /* Padding for aesthetics */
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
+    overflow-y: auto; /* Scroll if necessary */
+    left: 20px;
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin-left: 220px; /* Space for the sidebar */
+    padding: 20px; /* Padding for the main content */
+    flex-grow: 1; /* Allow main content to grow */
+  }
+  
+  /* Other Styles */
+  .h-100 {
+    height: 10rem !important;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+  
+  .bg-grey {
+    background-color: rgb(204, 239, 247);
+  }
+  
+  .add {
+    margin-top: 20px;
+   
+    /* Adjust margin instead of absolute positioning */
+  }
+  
+  .view {
+    margin-top: 20px;
+  
+    /* Adjust margin instead of absolute positioning */
+  }
+  
+  .btns {
+    height: 40px;
+    width: 200px;
+    left: 30px;
+    background-color: rgb(122, 223, 245);
+    font-size: large;
+    left: 0%;
+    right: 2px;
+  }
+  
+  .container {
+    display: flex;
+  }  
+.buton{
+    display: flex;
+}
+.sidebar ul li a {
+    
+    list-style: none;
+    text-decoration: none; /* Remove underline */
+    
+    
+  }  
+  ul {
+    list-style-type: none; /* Removes the bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+  }
+  .sidebar ul li:hover {
+    background-color: #d0d0d0; /* Change this to your desired hover color */
+  }
+  

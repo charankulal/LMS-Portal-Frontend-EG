@@ -9,13 +9,22 @@ import { LoginService } from './login.service';
 export class BatchService {
   constructor(private http: HttpClient) { }
 
+  //create a new batch
   public createBatch(batchData:any, requestOptions:any)
   {
     return this.http.post(`${baseUrl}/api/batches/create-batch`,batchData,requestOptions)
   } 
 
-  public getAllBranchesCreatedByInstructor(id:any){
+
+  // get all the batches created by specific instructor using id
+  public getAllBatchesCreatedByInstructor(id:any){
     return this.http.get(`${baseUrl}/api/batches/${id}/batches`)
+  }
+
+
+  // get specific batch by using id
+  public getBatchById(id:any){
+    return this.http.get(`${baseUrl}/api/batches/${id}`)
   }
 
   // get user details
@@ -31,5 +40,10 @@ export class BatchService {
     {
       return null
     }
+  }
+
+  // get certification details
+  public getCertificationDetails(){
+    
   }
 }
