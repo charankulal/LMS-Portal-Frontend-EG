@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from '../../../services/batch.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-view-batch',
@@ -13,8 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ViewBatchComponent implements OnInit {
   batch:any=[]
-  constructor(private batchService: BatchService,private route: ActivatedRoute){}
+  constructor(private batchService: BatchService,private route: ActivatedRoute,private login:LoginService,private router:Router){}
   ngOnInit(): void {
+    if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
+      this.login.logout()
+      this.router.navigate(['/login'])
+    }
     this.batchService.getBatchById(this.route.snapshot.paramMap.get('id')).subscribe(
       (data: any) => {
         this.batch = data;

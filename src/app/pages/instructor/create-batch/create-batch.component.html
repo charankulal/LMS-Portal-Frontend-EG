@@ -9,14 +9,16 @@
                     <!-- Batch name Field -->
                     <mat-form-field class="full-width margin col-md-8 offset-md-2 my-3 " appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input required matInput placeholder="Enter Batch Name" name="name" type="text" 
-                        [(ngModel)]="batchData.name" [ngModelOptions]="{ standalone: true }" />
+                        <input required matInput placeholder="Enter Batch Name" name="name" type="text"
+                            [(ngModel)]="batchData.name" [ngModelOptions]="{ standalone: true }" />
                     </mat-form-field>
 
                     <!-- Description field -->
                     <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
                         <mat-label>Description</mat-label>
-                        <textarea required type="text" matInput placeholder="Enter Description" name="description" rows="4" [(ngModel)]="batchData.description" [ngModelOptions]="{ standalone: true }"></textarea>
+                        <textarea required type="text" matInput placeholder="Enter Description" name="description"
+                            rows="4" [(ngModel)]="batchData.description"
+                            [ngModelOptions]="{ standalone: true }"></textarea>
                     </mat-form-field>
 
 
@@ -31,6 +33,5 @@
                 </form>
             </mat-card>
         </div>
-
     </div>
 </div>

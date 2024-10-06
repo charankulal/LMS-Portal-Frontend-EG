@@ -6,6 +6,7 @@ import { InstructorDashboardComponent } from './pages/instructor/instructor-dash
 import { CreateBatchComponent } from './pages/instructor/create-batch/create-batch.component';
 import { ViewAllBatchesComponent } from './pages/instructor/view-all-batches/view-all-batches.component';
 import { ViewBatchComponent } from './pages/batch/view-batch/view-batch.component';
+import { CreateTraineeComponent } from './pages/admin/create-trainee/create-trainee.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -14,7 +15,8 @@ export const routes: Routes = [
   { path: 'instructor-dashboard/:id', component: InstructorDashboardComponent, pathMatch: 'full' },
   { path: 'create-batch', component: CreateBatchComponent, pathMatch: 'full' },
   { path: 'view-all-batches', component: ViewAllBatchesComponent, pathMatch: 'full' },
-  { path: 'batch/:id', component: ViewBatchComponent, pathMatch: 'full' }
+  { path: 'batch/:id', component: ViewBatchComponent, pathMatch: 'full' },
+  { path: 'create-trainee', component: CreateTraineeComponent, pathMatch: 'full' }
 
 ];
 
