@@ -1,0 +1,32 @@
+.container {
+  margin: 20px;
+  
+}
+
+table {
+  margin-left: 5%;
+  width: 80%;
+  border-radius: 20px;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  padding: 8px;
+  
+}
+
+.description-column {
+  width: 50%;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+th{
+  text-align: center;
+  font-size: large;
+}
+
+.table-header{
+  background-color: rgb(161, 183, 183);
+}

@@ -1,14 +1,14 @@
-<h1 class="head"><b>Welcome Instructor!</b></h1>
+<h1 class="head"><b>Welcome {{this.login.getUser().fullName}}!</b></h1>
 
 <div class="container">
   <!-- Sidebar -->
   <div class="sidebar">
     <h2></h2>
     <ul>
-      <li><a href="#batches"><div class="add">
+      <li><a [href]="['/create-batch']"><div class="add" >
         <button mat-stroked-button class="btns btn-primary text-light">Add Batch</button>
       </div></a></li>
-      <li><a href="#trainees"><div class="view">
+      <li><a [href]="['/view-all-batches']"><div class="view" >
         <button mat-stroked-button class="btns btn-primary text-light">View Batches</button>
       </div></a></li>
      
