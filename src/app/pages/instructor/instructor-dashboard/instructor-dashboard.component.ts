@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-instructor-dashboard',
@@ -12,6 +10,13 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './instructor-dashboard.component.html',
   styleUrl: './instructor-dashboard.component.css'
 })
-export class InstructorDashboardComponent {
-
+export class InstructorDashboardComponent implements OnInit {
+  constructor(private login:LoginService,private router:Router) {}
+  ngOnInit(): void {
+    if(!this.login.isLoggedIn() || this.login.getUserRole()!="Instructor")
+    {
+      this.login.logout()
+      this.router.navigate(['/login'])
+    }
+  }
 }

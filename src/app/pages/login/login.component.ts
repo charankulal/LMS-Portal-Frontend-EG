@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   };
   constructor(private snack:MatSnackBar,private login:LoginService,private router:Router) {}
   ngOnInit(): void {
-
+    this.login.logout()
   }
 
   formSubmit(){
