@@ -69,7 +69,7 @@ export class CreateBatchComponent implements OnInit {
           horizontalPosition: 'center',
         })
         
-        // this.router.navigate(['/'])
+       this.router.navigate([`/batch/${data.id}`])
       }, (error) => {
         this.snack.open("Internal Server Error!! Try Again", 'OK', {
           duration: 3000,

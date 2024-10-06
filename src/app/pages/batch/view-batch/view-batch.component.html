@@ -1,0 +1,38 @@
+<mat-card class="bg-light w-50 offset-md-3 my-5">
+    <mat-card-title class="my-3 text-center">
+       Batch Name: {{batch.name}}
+    </mat-card-title>
+    <mat-card-content class="my-3">
+        <b>Description:</b> {{batch.description}}
+    </mat-card-content>
+    <mat-card-actions class="m-4">
+        <button mat-raised-button color="accent" >Add Sprints</button>
+        <button mat-raised-button color="primary" class="mx-2">View Sprints</button>
+        <button mat-stroked-button color="primary" >Add Trainees</button>
+        <button mat-flat-button color="accent" class="mx-2">View All Trainees </button>
+    </mat-card-actions>
+</mat-card>
+
+<div class="container">
+    <div class="row">
+        <mat-card class="insight">
+            <mat-card-title>Total Sprints</mat-card-title>
+            <mat-card-content>5</mat-card-content>
+        </mat-card>
+
+        <mat-card class="insight">
+            <mat-card-title>Total Certifications</mat-card-title>
+            <mat-card-content>5</mat-card-content>
+        </mat-card>
+
+        <mat-card class="insight">
+            <mat-card-title>Total Trainees</mat-card-title>
+            <mat-card-content>5</mat-card-content>
+        </mat-card>
+
+        <mat-card class="insight">
+            <mat-card-title>Total Days Completed</mat-card-title>
+            <mat-card-content>5</mat-card-content>
+        </mat-card>
+    </div>
+</div>

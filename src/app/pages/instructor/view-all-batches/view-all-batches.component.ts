@@ -19,7 +19,7 @@ export class ViewAllBatchesComponent implements OnInit{
   constructor(private snack: MatSnackBar, private batchService: BatchService, private router: Router) { }
   ngOnInit(): void {
     const id= this.batchService.getUser().id
-    this.batchService.getAllBranchesCreatedByInstructor(id).subscribe(
+    this.batchService.getAllBatchesCreatedByInstructor(id).subscribe(
       (data: any) => {
         this.batches = data;
         console.log(this.batches)
@@ -28,5 +28,9 @@ export class ViewAllBatchesComponent implements OnInit{
         console.error('Error fetching batches:', error);
       }
     );
+  }
+
+  viewBatch(id:any){
+    this.router.navigate([`/batch/${id}`])
   }
 }
