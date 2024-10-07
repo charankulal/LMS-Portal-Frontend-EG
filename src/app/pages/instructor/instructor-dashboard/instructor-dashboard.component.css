@@ -6,11 +6,12 @@
 .sidebar {
     width: 200px; /* Width of the sidebar */
     background-color: rgb(242, 243, 244); /* Background color */
-    padding: 20px; /* Padding for aesthetics */
+    padding: 0px; /* Padding for aesthetics */
     height: 100vh; /* Full height */
     position: fixed; /* Fixed position */
     overflow-y: auto; /* Scroll if necessary */
-    left: 20px;
+    left: 0px;
+    top: 60px;
   }
   
   /* Main Content */
@@ -51,31 +52,37 @@
     height: 40px;
     width: 200px;
     left: 30px;
-    background-color: rgb(122, 223, 245);
+    background-color: rgb(145, 146, 146);
     font-size: large;
-    left: 0%;
-    right: 2px;
+    left: 1px;
+    right: 1px;
+    border-radius: 8px;
   }
   
   .container {
     display: flex;
-  }  
+  } 
+  .buton {
+    display: flex;
+    background-color: rgb(181, 183, 183); 
+    transition: background-color 0.3s ease; 
+}
+
+
+.sidebar .btns:hover {
+  background-color: rgb(123, 127, 128) !important; 
+  color: white; 
+}
 .buton{
     display: flex;
 }
 .sidebar ul li a {
     
     list-style: none;
-    text-decoration: none; /* Remove underline */
-    
-    
+    text-decoration: none;  
   }  
   ul {
-    list-style-type: none; /* Removes the bullet points */
-    padding: 0; /* Removes default padding */
-    margin: 0; /* Removes default margin */
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
   }
-  .sidebar ul li:hover {
-    background-color: #d0d0d0; /* Change this to your desired hover color */
-  }
-  
