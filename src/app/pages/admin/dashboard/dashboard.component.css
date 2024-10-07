@@ -14,7 +14,7 @@
 
 .offset-1{
     position: absolute;
-    left: 6%;
+    left: 15%;
 }
 
 
@@ -29,7 +29,8 @@
     height: 100vh; /* Full height */
     position: fixed; /* Fixed position */
     overflow-y: auto; /* Scroll if necessary */
-    left: 20px;
+    left: 0px;
+    top: 60px;
   }
   
   /* Main Content */
@@ -94,7 +95,8 @@
     padding: 0; /* Removes default padding */
     margin: 0; /* Removes default margin */
   }
-  .sidebar ul li:hover {
-    background-color: #d0d0d0; /* Change this to your desired hover color */
+  .sidebar .btns:hover {
+    background-color: rgb(139, 77, 77) !important;
+    color: white;
   }
   
