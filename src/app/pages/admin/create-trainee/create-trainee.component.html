@@ -1,6 +1,17 @@
 <div class="container">
+    <div class="sidebar">
+        <ul>
+          <li><a [href]="['/create-trainee']"><div class="add" >
+            <button mat-stroked-button class="btns btn-primary text-dark">Create Trainee</button>
+          </div></a></li>
+          <li><a [href]="['/view-all-trainees']"><div class="view" >
+            <button mat-stroked-button class="btns btn-primary text-dark">View All Trainees</button>
+          </div></a></li>
+         
+        </ul>
+      </div>
 <div class="row">
-    <div class="col-md-6 offset-md-3 my-2">
+    <div class="col-md-8 offset-md-2 my-2">
         <mat-card class="bg-primary">
             <h1 class="text-center my-3">Create New Trainee</h1>
             <form (ngSubmit)="formSubmit()">
@@ -27,7 +38,7 @@
                 </mat-form-field>
 
 
-                <div class="container text-center margin my-3">
+                <div class="butn container text-center margin my-3">
                     <button type="submit" mat-raised-button color="primary" class="mx-2">
                         Create Trainee
                     </button>
