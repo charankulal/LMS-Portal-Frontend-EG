@@ -21,11 +21,11 @@
             <td mat-cell *matCellDef="let batch">
               <button mat-raised-button color="primary" (click)="viewBatch(batch.id)">View</button>
               <button mat-stroked-button color="primary" class="mx-3">Update</button>
-              <button mat-flat-button color="accent" >Delete</button>
+              <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)" >Delete</button>
 
               
                <!-- (click)="updateBatch(batch.id)" -->
-               <!-- (click)="deleteBatch(batch.id)" -->
+               <!--  -->
             </td>
           </ng-container>
           
