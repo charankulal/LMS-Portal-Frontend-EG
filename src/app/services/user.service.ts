@@ -13,4 +13,10 @@ export class UserService {
   public createUser(userData:any){
     return this.http.post(`${baseUrl}/api/users/create`,userData)
   }
+
+  // get all trainees
+  public getAllTrainees()
+  {
+    return this.http.get(`${baseUrl}/api/users/trainees`)
+  }
 }
