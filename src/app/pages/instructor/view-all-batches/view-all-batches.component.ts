@@ -17,7 +17,7 @@ export class ViewAllBatchesComponent implements OnInit{
   batches: any = [];
   
   displayedColumns: string[] = ["Sl No", 'name', 'description','actions'];
-  constructor(private batchService: BatchService, private router: Router,private  login:LoginService) { }
+  constructor(private batchService: BatchService,private snack:MatSnackBar, private router: Router,private  login:LoginService) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -37,5 +37,31 @@ export class ViewAllBatchesComponent implements OnInit{
 
   viewBatch(id:any){
     this.router.navigate([`/batch/${id}`])
+  }
+
+  updateBatch(id:any){
+    this.router.navigate([`update-batch/${id}`])
+  }
+
+  deleteBatch(id:any){
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Method':'DELETE'
+    }
+    const requestOptions = {
+      headers: new Headers(headerDict),
+    };
+    this.batchService.deleteBatch(id, requestOptions).subscribe((data:any)=>{
+      this.batches = this.batches.filter((batch:any)=> batch.id!=id)
+      this.snack.open("Batch Deleted successfully!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      this.router.navigate(["/view-all-batches"])
+    },(error)=>{
+      window.alert("error")
+    })
   }
 }

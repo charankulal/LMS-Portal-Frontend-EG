@@ -42,6 +42,16 @@ export class BatchService {
     }
   }
 
+  //Delete the batch by id
+  public deleteBatch(id:any, requestOptions:any){
+    return this.http.delete(`${baseUrl}/api/batches/${id}`,requestOptions)
+  }
+
+  // Update the batch by id
+  public UpdateBatch(id:any,data:any){
+    return this.http.put(`${baseUrl}/api/batches/${id}`,data)
+  }
+
   // get certification details
   public getCertificationDetails(){
     
