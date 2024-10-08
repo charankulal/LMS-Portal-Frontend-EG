@@ -12,8 +12,10 @@
 }
 .login-btn{
   left: 50rem;
+  top: 0px;
 }
 .right{
-  position: absolute;
+  position: relative;
   left: 45rem;
+  top: 0px;
 }
