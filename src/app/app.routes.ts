@@ -7,6 +7,8 @@ import { CreateBatchComponent } from './pages/instructor/create-batch/create-bat
 import { ViewAllBatchesComponent } from './pages/instructor/view-all-batches/view-all-batches.component';
 import { ViewBatchComponent } from './pages/batch/view-batch/view-batch.component';
 import { CreateTraineeComponent } from './pages/admin/create-trainee/create-trainee.component';
+import { ViewTraineesComponent } from './pages/admin/view-trainees/view-trainees.component';
+import { CreateSprintComponent } from './pages/sprint/create-sprint/create-sprint.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -16,10 +18,10 @@ export const routes: Routes = [
   { path: 'create-batch', component: CreateBatchComponent, pathMatch: 'full' },
   { path: 'view-all-batches', component: ViewAllBatchesComponent, pathMatch: 'full' },
   { path: 'batch/:id', component: ViewBatchComponent, pathMatch: 'full' },
-  { path: 'create-trainee', component: CreateTraineeComponent, pathMatch: 'full' }
-
+  { path: 'create-trainee', component: CreateTraineeComponent, pathMatch: 'full' },
+  { path: 'view-all-trainees', component: ViewTraineesComponent, pathMatch: 'full' },
+  { path: 'create-sprint/:id', component: CreateSprintComponent, pathMatch: 'full' }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

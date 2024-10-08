@@ -6,7 +6,7 @@
         <b>Description:</b> {{batch.description}}
     </mat-card-content>
     <mat-card-actions class="m-4">
-        <button mat-raised-button color="accent" >Add Sprints</button>
+        <button mat-raised-button color="accent" (click)="createSprint()" >Add Sprints</button>
         <button mat-raised-button color="primary" class="mx-2">View Sprints</button>
         <button mat-stroked-button color="primary" >Add Trainees</button>
         <button mat-flat-button color="accent" class="mx-2">View All Trainees </button>

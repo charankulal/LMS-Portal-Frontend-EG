@@ -17,7 +17,7 @@ export class ViewAllBatchesComponent implements OnInit{
   batches: any = [];
   
   displayedColumns: string[] = ["Sl No", 'name', 'description','actions'];
-  constructor(private snack: MatSnackBar, private batchService: BatchService, private router: Router,private  login:LoginService) { }
+  constructor(private batchService: BatchService, private router: Router,private  login:LoginService) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()

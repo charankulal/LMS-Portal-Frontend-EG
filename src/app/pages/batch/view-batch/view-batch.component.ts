@@ -13,8 +13,8 @@ import { LoginService } from '../../../services/login.service';
   styleUrl: './view-batch.component.css'
 })
 export class ViewBatchComponent implements OnInit {
-  batch:any=[]
-  constructor(private batchService: BatchService,private route: ActivatedRoute,private login:LoginService,private router:Router){}
+  batch: any = []
+  constructor(private batchService: BatchService, private route: ActivatedRoute, private login: LoginService, private router: Router) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -29,5 +29,9 @@ export class ViewBatchComponent implements OnInit {
       }
     );
 
+  }
+
+  createSprint() {
+    this.router.navigate([`create-sprint/${this.route.snapshot.paramMap.get('id')}`])
   }
 }
