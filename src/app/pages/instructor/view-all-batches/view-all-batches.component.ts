@@ -39,6 +39,10 @@ export class ViewAllBatchesComponent implements OnInit{
     this.router.navigate([`/batch/${id}`])
   }
 
+  updateBatch(id:any){
+    this.router.navigate([`update-batch/${id}`])
+  }
+
   deleteBatch(id:any){
     const headerDict = {
       'Content-Type': 'application/json',
