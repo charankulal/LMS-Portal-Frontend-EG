@@ -10,6 +10,8 @@ import { CreateTraineeComponent } from './pages/admin/create-trainee/create-trai
 import { ViewTraineesComponent } from './pages/admin/view-trainees/view-trainees.component';
 import { CreateSprintComponent } from './pages/sprint/create-sprint/create-sprint.component';
 import { UpdateBatchComponent } from './pages/instructor/update-batch/update-batch.component';
+import { ViewSprintsComponent } from './pages/sprint/view-sprints/view-sprints.component';
+import { ViewSprintComponent } from './pages/sprint/view-sprint/view-sprint.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -23,6 +25,8 @@ export const routes: Routes = [
   { path: 'view-all-trainees', component: ViewTraineesComponent, pathMatch: 'full' },
   { path: 'create-sprint/:id', component: CreateSprintComponent, pathMatch: 'full' },
   { path: 'update-batch/:id', component: UpdateBatchComponent, pathMatch: 'full' },
+  { path: 'view-all-sprints/:id', component: ViewSprintsComponent, pathMatch: 'full' },
+  { path: 'view-sprint/:id', component: ViewSprintComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

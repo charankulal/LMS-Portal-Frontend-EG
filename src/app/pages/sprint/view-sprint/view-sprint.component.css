@@ -1,0 +1,9 @@
+button{
+    height: 3rem;
+}
+.insight{
+    text-align: center;
+    margin: 10px;
+    width: 16rem;
+    background-color: rgb(128, 135, 133);
+}
