@@ -12,6 +12,8 @@ import { CreateSprintComponent } from './pages/sprint/create-sprint/create-sprin
 import { UpdateBatchComponent } from './pages/instructor/update-batch/update-batch.component';
 import { ViewSprintsComponent } from './pages/sprint/view-sprints/view-sprints.component';
 import { ViewSprintComponent } from './pages/sprint/view-sprint/view-sprint.component';
+import { CreatePostComponent } from './pages/post/create-post/create-post.component';
+import { ViewPostsComponent } from './pages/post/view-posts/view-posts.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -27,6 +29,8 @@ export const routes: Routes = [
   { path: 'update-batch/:id', component: UpdateBatchComponent, pathMatch: 'full' },
   { path: 'view-all-sprints/:id', component: ViewSprintsComponent, pathMatch: 'full' },
   { path: 'view-sprint/:id', component: ViewSprintComponent, pathMatch: 'full' },
+  { path: ':id/create-post', component: CreatePostComponent, pathMatch: 'full' },
+  { path: ':id/view-posts', component: ViewPostsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
