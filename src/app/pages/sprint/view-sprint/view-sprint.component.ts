@@ -33,9 +33,11 @@ export class ViewSprintComponent implements OnInit {
     },(error)=>{
       console.log(error)
     })
-
- 
-
-
+  }
+  createPost(){
+    this.router.navigate([`${this.sprint.id}/create-post`]);
+  }
+  viewAllPosts(){
+    this.router.navigate([`${this.sprint.id}/view-posts`]);
   }
 }
