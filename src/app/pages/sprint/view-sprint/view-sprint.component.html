@@ -1,0 +1,17 @@
+<mat-card class="bg-light w-50 offset-md-3 my-5">
+    <mat-card-title class="my-3 text-center">
+       Sprint Name: {{sprint.name}}
+    </mat-card-title>
+    <mat-card-content class="my-3">
+        <p><b>Description:</b> {{sprint.description}}</p>
+        <p><b>Start Date:</b> {{sprint.from_Day}}</p>
+        <p><b>End Date:</b> {{sprint.to_Day}}</p>
+        <p><b>Points:</b> {{sprint.points}}</p>
+    </mat-card-content>
+    <mat-card-actions class="m-4">
+        <button mat-raised-button color="accent"  >Add Posts</button>
+        <button mat-raised-button color="primary" class="mx-2" >View Posts</button>
+        <button mat-stroked-button color="primary" >Add Certifications</button>
+        <button mat-flat-button color="accent" class="mx-2">View Certifications </button>
+    </mat-card-actions>
+</mat-card>

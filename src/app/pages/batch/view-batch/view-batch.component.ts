@@ -34,4 +34,7 @@ export class ViewBatchComponent implements OnInit {
   createSprint() {
     this.router.navigate([`create-sprint/${this.route.snapshot.paramMap.get('id')}`])
   }
+  viewAllSprints(){
+    this.router.navigate([`view-all-sprints/${this.route.snapshot.paramMap.get('id')}`])
+  }
 }
