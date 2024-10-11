@@ -22,6 +22,9 @@ import { UpdateSprintComponent } from './pages/sprint/update-sprint/update-sprin
 import { AddTrainessComponent } from './pages/instructor/add-trainess/add-trainess.component';
 import { ViewEnrolledTraineesComponent } from './pages/instructor/view-enrolled-trainees/view-enrolled-trainees.component';
 import { UpdateTraineeComponent } from './pages/admin/update-trainee/update-trainee.component';
+import { CreateInstructorComponent } from './pages/admin/create-instructor/create-instructor.component';
+import { UpdateInstructorComponent } from './pages/admin/update-instructor/update-instructor.component';
+import { ViewAllInstructorsComponent } from './pages/admin/view-all-instructors/view-all-instructors.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -47,7 +50,9 @@ export const routes: Routes = [
   { path: ':id/add-trainees', component: AddTrainessComponent, pathMatch: 'full' },
   { path: ':id/view-trainees', component: ViewEnrolledTraineesComponent, pathMatch: 'full' },
   { path: 'update-trainee/:id', component: UpdateTraineeComponent, pathMatch: 'full' },
-  
+  { path: 'update-instructor/:id', component: UpdateInstructorComponent, pathMatch: 'full' },
+  { path: 'create-instructor', component: CreateInstructorComponent, pathMatch: 'full' },
+  { path: 'view-all-instructors', component: ViewAllInstructorsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

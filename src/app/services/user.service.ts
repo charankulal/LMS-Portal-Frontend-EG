@@ -50,8 +50,23 @@ export class UserService {
     return this.http.put(`${baseUrl}/api/users/${id}`,data)
   }
 
+  // update instructor
+  public updateInstructor(id:any, data:any){
+    return this.http.put(`${baseUrl}/api/users/${id}`,data)
+  }
+
   // delete trainee
   public deleteTrainee(id:any){
     return this.http.delete(`${baseUrl}/api/users/${id}`)
+  }
+
+  // delete instructor
+  public deleteInstructor(id:any){
+    return this.http.delete(`${baseUrl}/api/users/${id}`)
+  }
+
+  // get all instructors
+  public getAllInstructors(){
+  return this.http.get(`${baseUrl}/api/users/instructors`)
   }
 }

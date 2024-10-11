@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
 import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
-import { JsonPipe } from '@angular/common';
-import { DataSource } from '@angular/cdk/collections';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-view-trainees',
+  selector: 'app-view-all-instructors',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, JsonPipe],
-  templateUrl: './view-trainees.component.html',
-  styleUrl: './view-trainees.component.css'
+  imports: [MatTableModule, MatButtonModule],
+  templateUrl: './view-all-instructors.component.html',
+  styleUrl: './view-all-instructors.component.css'
 })
-export class ViewTraineesComponent implements OnInit {
-  trainees: any[] = [];
+export class ViewAllInstructorsComponent implements OnInit {
+  instructors: any[] = [];
 
-  displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
+  displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email',  'actions'];
   constructor(private login: LoginService, private router: Router, private userservice: UserService, private snack:MatSnackBar) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Admin") {
@@ -26,10 +24,10 @@ export class ViewTraineesComponent implements OnInit {
       this.router.navigate(['/login'])
     }
 
-    this.userservice.getAllTrainees().subscribe(
+    this.userservice.getAllInstructors().subscribe(
       (data: any) => {
-        this.trainees = data;
-        console.log(this.trainees)
+        this.instructors = data;
+        console.log(this.instructors)
       },
       (error) => {
         console.error('Error fetching batches:', error);
@@ -37,15 +35,15 @@ export class ViewTraineesComponent implements OnInit {
     );
   }
 
-  updateTrainee(id:any){
-    this.router.navigate([`update-trainee/${id}`])
+  updateInstructor(id:any){
+    this.router.navigate([`update-instructor/${id}`])
   }
 
-  deleteTrainee(id:any){
+  deleteInstructor(id:any){
     
-    this.userservice.deleteTrainee(id).subscribe((data:any)=>{
-      this.trainees = this.trainees.filter((trainee:any)=> trainee.id!=id)
-      this.snack.open("Trainee Deleted successfully!", 'OK', {
+    this.userservice.deleteInstructor(id).subscribe((data:any)=>{
+      this.instructors = this.instructors.filter((instructor:any)=> instructor.id!=id)
+      this.snack.open("Instructor Deleted successfully!", 'OK', {
         duration: 3000,
         verticalPosition: 'bottom',
         horizontalPosition: 'center',
@@ -59,4 +57,3 @@ export class ViewTraineesComponent implements OnInit {
     this.router.navigate(['admin-dashboard'])
   }
 }
-
