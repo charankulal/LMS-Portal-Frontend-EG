@@ -14,6 +14,14 @@ import { ViewSprintsComponent } from './pages/sprint/view-sprints/view-sprints.c
 import { ViewSprintComponent } from './pages/sprint/view-sprint/view-sprint.component';
 import { CreatePostComponent } from './pages/post/create-post/create-post.component';
 import { ViewPostsComponent } from './pages/post/view-posts/view-posts.component';
+import { CreateCertificationComponent } from './pages/certificates/create-certification/create-certification.component';
+import { ViewCertificationsComponent } from './pages/certificates/view-certifications/view-certifications.component';
+import { UpdateCertificateComponent } from './pages/certificates/update-certificate/update-certificate.component';
+import { UpdatePostComponent } from './pages/post/update-post/update-post.component';
+import { UpdateSprintComponent } from './pages/sprint/update-sprint/update-sprint.component';
+import { AddTrainessComponent } from './pages/instructor/add-trainess/add-trainess.component';
+import { ViewEnrolledTraineesComponent } from './pages/instructor/view-enrolled-trainees/view-enrolled-trainees.component';
+import { UpdateTraineeComponent } from './pages/admin/update-trainee/update-trainee.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -31,6 +39,15 @@ export const routes: Routes = [
   { path: 'view-sprint/:id', component: ViewSprintComponent, pathMatch: 'full' },
   { path: ':id/create-post', component: CreatePostComponent, pathMatch: 'full' },
   { path: ':id/view-posts', component: ViewPostsComponent, pathMatch: 'full' },
+  { path: ':id/create-certificate', component: CreateCertificationComponent, pathMatch: 'full' },
+  { path: ':id/view-certificates', component: ViewCertificationsComponent, pathMatch: 'full' },
+  { path: 'update-certificates/:id', component: UpdateCertificateComponent, pathMatch: 'full' },
+  { path: 'update-post/:id', component: UpdatePostComponent, pathMatch: 'full' },
+  { path: 'update-sprint/:id', component: UpdateSprintComponent, pathMatch: 'full' },
+  { path: ':id/add-trainees', component: AddTrainessComponent, pathMatch: 'full' },
+  { path: ':id/view-trainees', component: ViewEnrolledTraineesComponent, pathMatch: 'full' },
+  { path: 'update-trainee/:id', component: UpdateTraineeComponent, pathMatch: 'full' },
+  
 ];
 
 @NgModule({

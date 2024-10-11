@@ -23,4 +23,14 @@ export class SprintService {
   public getSprintById(id:any){
     return this.http.get(`${baseUrl}/api/sprints/view-sprint/${id}`)
   }
+
+  // delete sprint by id
+  public deleteSprintById(id:any){
+    return this.http.delete(`${baseUrl}/api/sprints/delete-sprint/${id}`)
+  }
+
+  // update sprint by id
+  public updateSprintById(id:any,data:any){
+    return this.http.put(`${baseUrl}/api/sprints/update-sprint/${id}`,data)
+  }
 }

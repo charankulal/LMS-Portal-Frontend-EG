@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { JsonPipe } from '@angular/common';
 import { DataSource } from '@angular/cdk/collections';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-trainees',
@@ -18,7 +19,7 @@ export class ViewTraineesComponent implements OnInit {
   trainees: any[] = [];
 
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
-  constructor(private login: LoginService, private router: Router, private userservice: UserService) { }
+  constructor(private login: LoginService, private router: Router, private userservice: UserService, private snack:MatSnackBar) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Admin") {
       this.login.logout()
@@ -34,6 +35,28 @@ export class ViewTraineesComponent implements OnInit {
         console.error('Error fetching batches:', error);
       }
     );
+  }
+
+  updateTrainee(id:any){
+    this.router.navigate([`update-trainee/${id}`])
+  }
+
+  deleteTrainee(id:any){
+    
+    this.userservice.deleteTrainee(id).subscribe((data:any)=>{
+      this.trainees = this.trainees.filter((trainee:any)=> trainee.id!=id)
+      this.snack.open("Sprint Deleted successfully!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      
+    },(error)=>{
+      window.alert("error")
+    })
+  }
+  goToDashboard(){
+    this.router.navigate(['admin-dashboard'])
   }
 }
 

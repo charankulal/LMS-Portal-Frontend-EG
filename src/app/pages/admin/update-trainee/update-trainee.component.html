@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-8 offset-md-2 my-2">
+        <mat-card>
+            <h1 class="text-center my-3">Update Trainee</h1>
+            <form (ngSubmit)="formSubmit()">
+
+                <!-- full name Field -->
+                <mat-form-field class="full-width margin col-md-8 offset-md-2 my-3 " appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input required matInput placeholder="Enter Full Name" name="fullName" type="text"
+                        [(ngModel)]="userData.fullName" [ngModelOptions]="{ standalone: true }" />
+                </mat-form-field>
+
+                <!-- Email field -->
+                <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input required type="email" matInput placeholder="Enter Email" name="email"
+                        [(ngModel)]="userData.email" [ngModelOptions]="{ standalone: true }"/>
+                </mat-form-field>
+
+                <!-- Password field -->
+                <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input required type="password" matInput placeholder="Enter Password" name="password"
+                        [(ngModel)]="userData.password" [ngModelOptions]="{ standalone: true }"/>
+                </mat-form-field>
+
+
+                <div class="butn container text-center margin my-3">
+                    <button type="submit" mat-raised-button color="primary" class="mx-2">
+                        Update
+                    </button>
+                    <button type="reset" mat-raised-button color="accent" class="margin-left">
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

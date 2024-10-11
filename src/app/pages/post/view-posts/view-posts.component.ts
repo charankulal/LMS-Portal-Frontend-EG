@@ -6,6 +6,7 @@ import { PostService } from '../../../services/post.service';
 import { LoginService } from '../../../services/login.service';
 import { MatCardModule } from '@angular/material/card';
 import { NgFor } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-posts',
@@ -18,7 +19,7 @@ export class ViewPostsComponent implements OnInit {
   posts: any
   sprint: any
 
-  constructor(private router: Router, private route: ActivatedRoute, private sprintService: SprintService, private postService: PostService, private login: LoginService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private sprintService: SprintService, private postService: PostService, private login: LoginService, private snack: MatSnackBar) { }
   ngOnInit(): void {
     // login and role validation : use login service
 
@@ -42,8 +43,21 @@ export class ViewPostsComponent implements OnInit {
       console.log(error)
     })
   }
+  updatePost(id:any){
+    this.router.navigate([`update-post/${id}`])
+  }
 
-  viewPost(id: any) {
-
+  deletePost(id:any){
+    this.postService.deletePostById(id).subscribe((data:any)=>{
+      this.posts = this.posts.filter((post:any)=> post.contentId!=id)
+      this.snack.open("Post Deleted successfully!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      
+    },(error)=>{
+      window.alert("error")
+    })
   }
 }

@@ -4,8 +4,8 @@
         <div class="btn">
         <h2>All Trainees</h2>
         <div class="gap">
-        
-        <button mat-raised-button class="btns"  color="accent" id="ntb" (click)="goToDashboard()">Dashboard</button>
+        <button mat-raised-button color="accent" class="btns">Button 1</button>
+        <button mat-raised-button class="btns"  color="primary" id="ntb">Button 2</button>
     </div>
     </div>
         <table mat-table [dataSource]="trainees" class="mat-elevation-z8"
@@ -38,8 +38,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef > Actions </th>
                 <td mat-cell *matCellDef="let trainee">
-                    <button mat-stroked-button color="primary" (click)="updateTrainee(trainee.id)" >Update</button>
-                    <button mat-flat-button color="accent" class="mx-2" (click)="deleteTrainee(trainee.id)">Delete</button>
+                    <button mat-raised-button color="primary" (click)="AddTraineeToBatch(trainee.id)" >Add</button>
                 </td>
             </ng-container>
 
