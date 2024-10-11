@@ -11,7 +11,7 @@
     <mat-card-actions class="m-4">
         <button mat-raised-button color="accent" (click)="createPost()"  >Add Posts</button>
         <button mat-raised-button color="primary" class="mx-2" (click)="viewAllPosts()" >View Posts</button>
-        <button mat-stroked-button color="primary" >Add Certifications</button>
-        <button mat-flat-button color="accent" class="mx-2">View Certifications </button>
+        <button mat-stroked-button color="primary" (click)="createCertification()" >Add Certifications</button>
+        <button mat-flat-button color="accent" class="mx-2" (click)="viewCertification()">View Certifications </button>
     </mat-card-actions>
 </mat-card>

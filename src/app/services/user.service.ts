@@ -19,4 +19,39 @@ export class UserService {
   {
     return this.http.get(`${baseUrl}/api/users/trainees`)
   }
+
+  // get trainee by id
+  public getTraineeById(id:any){
+    return this.http.get(`${baseUrl}/api/users/get-user/${id}`)
+  }
+
+  // add trainees to the batch
+  public addTraineeToBatch(batchId:any, userId:any){
+    return this.http.post(`${baseUrl}/api/batches/add-trainee/${userId}/batch/${batchId}`,{})
+  }
+
+  // view all trainees enrolled in the batch
+  public getTraineesInBatch(batchId:any){
+    return this.http.get(`${baseUrl}/api/batches/view-trainee/batch/${batchId}`)
+  }
+
+  // fetch trainees who are not enrolled in current batch
+  public getTraineesNotInBatch(batchId:any){
+    return this.http.get(`${baseUrl}/api/batches/fetch-trainee/batch/${batchId}`)
+  }
+
+  // remove trainee from the batch
+  public removeTraineeFromBatch(batchId:any,id:any){
+    return this.http.delete(`${baseUrl}/api/batches/remove-trainee/batch/${batchId}/trainee/${id}`)
+  }
+
+  // update trainee
+  public updateTrainee(id:any, data:any){
+    return this.http.put(`${baseUrl}/api/users/${id}`,data)
+  }
+
+  // delete trainee
+  public deleteTrainee(id:any){
+    return this.http.delete(`${baseUrl}/api/users/${id}`)
+  }
 }

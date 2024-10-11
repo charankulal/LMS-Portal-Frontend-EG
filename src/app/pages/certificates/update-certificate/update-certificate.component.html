@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 my-2">
+            <mat-card>
+
+                <h1 class="text-center my-3">Update Certification</h1>
+                <form (ngSubmit)="formSubmit()">
+                    
+                    <!-- Batch name Field -->
+                    <mat-form-field class="full-width margin col-md-8 offset-md-2 my-3 " appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input required matInput placeholder="Enter Sprint Name" name="name" type="text"  [(ngModel)]="certificate.name" [ngModelOptions]="{ standalone: true }" />
+                    </mat-form-field>
+
+                    <!-- Description field -->
+                    <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea required type="text" matInput placeholder="Enter Description" name="description"
+                            rows="4" [(ngModel)]="certificate.description" [ngModelOptions]="{ standalone: true }"></textarea>
+                    </mat-form-field>
+
+                    <!-- Points field -->
+                    <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
+                        <mat-label>Points</mat-label>
+                        <input required type="text" matInput placeholder="Enter Points for completion" name="points" [(ngModel)]="certificate.points" [ngModelOptions]="{ standalone: true }"/>
+                    </mat-form-field>
+                    
+                    <div class="container text-center margin my-3">
+                        <button type="submit" mat-raised-button color="primary" class="mx-2">
+                            Update certification
+                        </button>
+                        <button type="reset" mat-raised-button color="accent" class="margin-left">
+                            Clear
+                        </button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

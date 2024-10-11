@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>View All Certificates in <b>{{sprint}}</b></h2>
+
+    <div *ngFor="let certificate of certificates" class="mat-elevation-z8 m-3 ">
+        <mat-card class="p-4">
+           
+                <mat-card-title>{{ certificate.title }}</mat-card-title>
+        
+            <mat-card-content>
+                <p><b>Description: </b>{{ certificate.description }}</p>
+                <button class="btn btn-outline-primary " disabled>{{certificate.points}} points</button>
+            </mat-card-content>
+            <mat-card-actions class="actions">
+                <button mat-raised-button color="primary" class="mb-2" (click)="updateCertificate(certificate.id)">Update</button>
+                <button mat-flat-button color="accent" (click)="deleteCertificate(certificate.id)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { DatePipe, JsonPipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SprintService } from '../../../services/sprint.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from '../../../services/login.service';
 @Component({
   selector: 'app-create-sprint',
   standalone: true,
@@ -27,7 +28,7 @@ export class CreateSprintComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe){}
+  constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe, private login:LoginService){}
 
   sprint={
     batchId:this.route.snapshot.paramMap.get('id'),
@@ -40,6 +41,10 @@ export class CreateSprintComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: login and authorization validation
+    if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
+      this.login.logout()
+      this.router.navigate(['/login'])
+    }
   }
 
   formSubmit(){

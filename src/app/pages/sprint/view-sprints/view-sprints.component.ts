@@ -15,7 +15,7 @@ import { SprintService } from '../../../services/sprint.service';
   styleUrl: './view-sprints.component.css'
 })
 export class ViewSprintsComponent implements OnInit {
-  displayedColumns: string[] = ["Sl No", "batch name", 'name', 'description', 'from_day', 'to_day', 'points', 'actions'];
+  displayedColumns: string[] = ["Sl No", "batch name", 'name', 'from_day', 'to_day', 'points', 'actions'];
   sprints: any
   batch: any
   constructor(private sprintService: SprintService, private snack: MatSnackBar, private router: Router, private login: LoginService, private route: ActivatedRoute, private batchService: BatchService) { }
@@ -39,7 +39,7 @@ export class ViewSprintsComponent implements OnInit {
     this.sprintService.getAllSprintsByBatch(this.route.snapshot.paramMap.get('id')).subscribe(
       (data: any) => {
         this.sprints = data;
-        
+
       },
       (error) => {
         console.error('Error fetching sprints', error);
@@ -55,11 +55,21 @@ export class ViewSprintsComponent implements OnInit {
   }
 
   updateSprint(id: any) {
-
+    this.router.navigate([`update-sprint/${id}`])
   }
 
   deleteSprint(id: any) {
-
+    this.sprintService.deleteSprintById(id).subscribe((data:any)=>{
+      this.sprints = this.sprints.filter((sprint:any)=> sprint.id!=id)
+      this.snack.open("Sprint Deleted successfully!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      
+    },(error)=>{
+      window.alert("error")
+    })
   }
 
 

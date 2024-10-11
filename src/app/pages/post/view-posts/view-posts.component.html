@@ -10,8 +10,8 @@
                 <p>{{ post.description }}</p>
             </mat-card-content>
             <mat-card-actions class="actions">
-                <button mat-raised-button color="primary" class="mb-2">Update</button>
-                <button mat-flat-button color="accent">Delete</button>
+                <button mat-raised-button color="primary" class="mb-2" (click)="updatePost(post.contentId)">Update</button>
+                <button mat-flat-button color="accent" (click)="deletePost(post.contentId)">Delete</button>
             </mat-card-actions>
         </mat-card>
     </div>

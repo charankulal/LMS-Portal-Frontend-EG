@@ -18,4 +18,19 @@ export class PostService {
   public getPostBySprintId(id:any){
     return this.http.get(`${baseUrl}/api/posts/view-posts/${id}`)
   }
+
+  // get post by id
+  public getPostById(id:any){
+    return this.http.get(`${baseUrl}/api/posts/view-post/${id}`)
+  }
+
+  // update post by id
+  public updatePostById(id:any,data:any){
+    return this.http.put(`${baseUrl}/api/posts/update-post/${id}`,data)
+  }
+
+  // delete post by id
+  public deletePostById(id:any){
+    return this.http.delete(`${baseUrl}/api/posts/delete-post/${id}`)
+  }
 }

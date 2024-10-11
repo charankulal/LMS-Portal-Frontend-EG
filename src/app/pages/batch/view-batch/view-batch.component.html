@@ -8,8 +8,8 @@
     <mat-card-actions class="m-4">
         <button mat-raised-button color="accent" (click)="createSprint()" >Add Sprints</button>
         <button mat-raised-button color="primary" class="mx-2" (click)="viewAllSprints()" >View Sprints</button>
-        <button mat-stroked-button color="primary" >Add Trainees</button>
-        <button mat-flat-button color="accent" class="mx-2">View All Trainees </button>
+        <button mat-stroked-button color="primary" (click)="addTrainees()" >Add Trainees</button>
+        <button mat-flat-button color="accent" class="mx-2" (click)="viewEnrolledTrainees(batch.id)">View All Trainees </button>
     </mat-card-actions>
 </mat-card>
 
