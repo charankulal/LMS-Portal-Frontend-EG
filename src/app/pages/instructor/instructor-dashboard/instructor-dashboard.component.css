@@ -1,88 +1,98 @@
+.Main-content{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
 
-  /* Sidebar */
- .head{
-    text-align: center;
- }
+
+}
+  /* Existing styles */
+.head {
+  text-align: center;
+}
 .sidebar {
-    width: 200px; /* Width of the sidebar */
-    background-color: rgb(242, 243, 244); /* Background color */
-    padding: 0px; /* Padding for aesthetics */
-    height: 100vh; /* Full height */
-    position: fixed; /* Fixed position */
-    overflow-y: auto; /* Scroll if necessary */
-    left: 0px;
-    top: 60px;
-  }
-  
-  /* Main Content */
-  .main-content {
-    margin-left: 220px; /* Space for the sidebar */
-    padding: 20px; /* Padding for the main content */
-    flex-grow: 1; /* Allow main content to grow */
-  }
-  
-  /* Other Styles */
-  .h-100 {
-    height: 10rem !important;
-  }
-  
-  .icon {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-  }
-  
-  .bg-grey {
-    background-color: rgb(204, 239, 247);
-  }
-  
-  .add {
-    margin-top: 20px;
-   
-    /* Adjust margin instead of absolute positioning */
-  }
-  
-  .view {
-    margin-top: 20px;
-  
-    /* Adjust margin instead of absolute positioning */
-  }
-  
-  .btns {
-    height: 40px;
-    width: 200px;
-    left: 30px;
-    background-color: rgb(145, 146, 146);
-    font-size: large;
-    left: 1px;
-    right: 1px;
-    border-radius: 8px;
-  }
-  
-  .container {
-    display: flex;
-  } 
-  .buton {
-    display: flex;
-    background-color: rgb(181, 183, 183); 
-    transition: background-color 0.3s ease; 
+  grid-area: sidebar;
+  min-width: 20px;
+  background-color: rgb(242, 243, 244);
+  padding: 0px;
+  height: 150vh;
+  display: flex;
+  position: fixed;
+  overflow-y: auto;
+  left: 0px;
+  top: 60px;
 }
-
-
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
+  flex-grow: 1;
+}
+.h-100 {
+  height: 10rem !important;
+}
+.icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.bg-grey {
+  background-color: rgb(182, 235, 251);
+}
+.add {
+  margin-top: 20px;
+}
+.view {
+  margin-top: 20px;
+}
+.btns {
+  height: 40px;
+  width: 200px;
+  background-color: rgb(145, 146, 146);
+  font-size: large;
+  border-radius: 8px;
+}
+.container {
+  display: flex;
+}
+.buton {
+  display: flex;
+  background-color: rgb(181, 183, 183);
+  transition: background-color 0.3s ease;
+}
 .sidebar .btns:hover {
-  background-color: rgb(123, 127, 128) !important; 
-  color: white; 
+  background-color: rgb(123, 127, 128) !important;
+  color: white;
 }
-.buton{
-    display: flex;
+.buton {
+  display: flex;
 }
 .sidebar ul li a {
-    
-    list-style: none;
-    text-decoration: none;  
-  }  
-  ul {
-    list-style-type: none; 
-    padding: 0; 
-    margin: 0; 
+  list-style: none;
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
   }
+  .main-content {
+      margin-left: 0;
+  }
+  .btns {
+      width: 100%;
+  }
+  .container {
+      flex-direction: column;
+  }
+  .col-md-5 {
+      width: 90%;
+      margin: 10px 0;
+  }
+}
