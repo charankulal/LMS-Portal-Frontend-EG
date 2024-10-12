@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  MatButtonModule } from '@angular/material/button';
@@ -12,12 +12,13 @@ import { SprintService } from '../../../services/sprint.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../../services/login.service';
 import { error } from 'console';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-update-sprint',
   standalone: true,
   providers: [provideNativeDateAdapter(),DatePipe],
-  imports: [MatButtonModule, MatCardModule,MatFormFieldModule,FormsModule,MatInput,ReactiveFormsModule,MatDatepickerModule],
+  imports: [MatButtonModule, MatCardModule,MatFormFieldModule,FormsModule,MatInput,ReactiveFormsModule,MatDatepickerModule, MatIconModule],
   templateUrl: './update-sprint.component.html',
   styleUrl: './update-sprint.component.css'
 })
@@ -27,7 +28,7 @@ readonly range = new FormGroup({
   start: new FormControl<Date | null>(null),
   end: new FormControl<Date | null>(null),
 });
-constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe, private login: LoginService){}
+constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe, private login: LoginService, private location:Location){}
 ngOnInit(): void {
   if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
     this.login.logout()
@@ -38,7 +39,11 @@ ngOnInit(): void {
   this.sprintService.getSprintById(this.route.snapshot.paramMap.get('id')).subscribe((data:any)=>{
     this.sprint=data[0]
   },(error)=>{
-    console.log(error)
+    this.snack.open("Internal Sever Error!", 'OK', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    })
   })
 }
 formSubmit(){
@@ -57,5 +62,8 @@ this.sprintService.updateSprintById(this.route.snapshot.paramMap.get('id'),this.
     horizontalPosition: 'center',
   })
 })
+}
+goBack(){
+  this.location.back()
 }
 }

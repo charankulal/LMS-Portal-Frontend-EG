@@ -56,7 +56,11 @@ export class ViewTraineesComponent implements OnInit {
       })
       
     },(error)=>{
-      window.alert("error")
+      this.snack.open("Internal server Error!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
     })
   }
   goToDashboard(){

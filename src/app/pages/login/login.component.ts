@@ -63,8 +63,6 @@ export class LoginComponent implements OnInit {
 
             if (this.login.getUserRole() == "Admin") {
               // route to admin dashboard
-              // window.location.href='/admin'
-              console.log(this.login.getUserRole())
               this.router.navigate(['/admin-dashboard'])
               this.login.loginStatusSubject.next(true)
             }
@@ -81,8 +79,6 @@ export class LoginComponent implements OnInit {
           },
         )
       }, (error) => {
-        console.log(error)
-        // alert("Error occurred")
         this.snack.open("Invalid Credentials!! Try Again", 'OK', {
           duration: 3000,
           verticalPosition: 'bottom',

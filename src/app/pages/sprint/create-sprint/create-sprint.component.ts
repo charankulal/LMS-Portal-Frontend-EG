@@ -6,16 +6,17 @@ import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { DatePipe, JsonPipe } from '@angular/common';
+import { DatePipe, JsonPipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SprintService } from '../../../services/sprint.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../../services/login.service';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-create-sprint',
   standalone: true,
   providers: [provideNativeDateAdapter(),DatePipe],
-  imports: [MatCardModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatDatepickerModule, ReactiveFormsModule, JsonPipe, FormsModule ],
+  imports: [MatCardModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatDatepickerModule, ReactiveFormsModule, JsonPipe, FormsModule, MatIconModule ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './create-sprint.component.html',
   styleUrl: './create-sprint.component.css'
@@ -28,7 +29,7 @@ export class CreateSprintComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe, private login:LoginService){}
+  constructor(private router:Router, private route:ActivatedRoute, private sprintService:SprintService, private snack:MatSnackBar, private datePipe: DatePipe, private login:LoginService, private location:Location){}
 
   sprint={
     batchId:this.route.snapshot.paramMap.get('id'),
@@ -65,5 +66,8 @@ export class CreateSprintComponent implements OnInit {
         horizontalPosition: 'center',
       })
     })
+  }
+  goBack(){
+this.location.back()
   }
 }

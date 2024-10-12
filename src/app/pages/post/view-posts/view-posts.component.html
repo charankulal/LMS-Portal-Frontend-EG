@@ -1,7 +1,19 @@
 <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <button mat-raised-button color="accent" id="ntb" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Back
+        </button>
+  
+        <form class="d-flex">
+          <mat-form-field appearance="outline" class="me-2">
+            <mat-label>Search Posts</mat-label>
+            <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
+          </mat-form-field>
+        </form>
+      </div>
     <h2>View All Posts in <b>{{sprint}}</b></h2>
 
-    <div *ngFor="let post of posts" class="mat-elevation-z8 m-3 ">
+    <div *ngFor="let post of postsToDisplay" class="mat-elevation-z8 m-3 ">
         <mat-card class="p-4">
            
                 <mat-card-title>{{ post.title }}</mat-card-title>

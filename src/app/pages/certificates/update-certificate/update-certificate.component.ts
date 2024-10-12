@@ -8,17 +8,19 @@ import { LoginService } from '../../../services/login.service';
 import { MatInputModule } from '@angular/material/input';
 import { CertificateService } from '../../../services/certificate.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-certificate',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [MatCardModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './update-certificate.component.html',
   styleUrl: './update-certificate.component.css'
 })
 export class UpdateCertificateComponent implements OnInit {
   certificate: any=[]
-  constructor(private route: ActivatedRoute, private login: LoginService, private router: Router, private certificateService: CertificateService, private snack: MatSnackBar) { }
+  constructor(private route: ActivatedRoute, private login: LoginService, private router: Router, private certificateService: CertificateService, private snack: MatSnackBar, private location:Location) { }
   
   ngOnInit(): void {
     // login and role validation : use login service
@@ -33,7 +35,11 @@ export class UpdateCertificateComponent implements OnInit {
       this.certificate = data[0]
       
     }, (error) => {
-      console.log(error)
+      this.snack.open("Internal Sever Error!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
     })
   }
   
@@ -52,5 +58,9 @@ export class UpdateCertificateComponent implements OnInit {
         horizontalPosition: 'center',
       })
     })
+  }
+
+  goBack(){
+    this.location.back()
   }
 }

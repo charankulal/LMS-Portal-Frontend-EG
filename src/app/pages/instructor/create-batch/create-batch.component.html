@@ -22,11 +22,14 @@
                     </mat-form-field>
 
                     <div class="container text-center margin my-3">
-                        <button type="submit" mat-raised-button color="primary" class="mx-2">
+                        <button type="submit" mat-raised-button color="primary" >
                             Create Batch
                         </button>
-                        <button type="reset" mat-raised-button color="accent" class="margin-left">
+                        <button type="reset" mat-raised-button color="accent" class="margin-left mx-2">
                             Clear
+                        </button>
+                        <button type="button" color="accent" class="margin-left btn btn-secondary" (click)="goBack()">
+                            Go Back
                         </button>
                     </div>
                 </form>

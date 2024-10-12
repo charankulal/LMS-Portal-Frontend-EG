@@ -1,6 +1,18 @@
 <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <button mat-raised-button color="accent" id="ntb" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon> Back
+        </button>
+  
+        <form class="d-flex">
+          <mat-form-field appearance="outline" class="me-2">
+            <mat-label>Search Batches</mat-label>
+            <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
+          </mat-form-field>
+        </form>
+      </div>
     <h2>View All Sprints</h2>
-    <table mat-table [dataSource]="sprints" class="mat-elevation-z8">
+    <table mat-table [dataSource]="sprintsToDisplay" class="mat-elevation-z8">
         <ng-container matColumnDef="Sl No">
             <th mat-header-cell *matHeaderCellDef> Sl No </th>
             <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>

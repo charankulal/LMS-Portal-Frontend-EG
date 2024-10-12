@@ -8,17 +8,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../../../services/post.service';
 import { LoginService } from '../../../services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-post',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatIconModule],
   templateUrl: './update-post.component.html',
   styleUrl: './update-post.component.css'
 })
 export class UpdatePostComponent implements OnInit{
   post:any=[]
-constructor(private router: Router, private route: ActivatedRoute,  private postService: PostService, private login: LoginService,private snack:MatSnackBar){}
+constructor(private router: Router, private route: ActivatedRoute,  private postService: PostService, private login: LoginService,private snack:MatSnackBar, private location: Location){}
 ngOnInit(): void {
   // login and role validation : use login service
 
@@ -31,7 +33,11 @@ ngOnInit(): void {
   this.postService.getPostById(this.route.snapshot.paramMap.get('id')).subscribe((data:any)=>{
     this.post=data[0]
   },(error)=>{
-    console.log(error)
+    this.snack.open("Internal Sever Error!", 'OK', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    })
   })
 }
 
@@ -49,5 +55,8 @@ this.postService.updatePostById(this.route.snapshot.paramMap.get('id'),this.post
     horizontalPosition: 'center',
   })
 })
+}
+goBack(){
+  this.location.back()
 }
 }

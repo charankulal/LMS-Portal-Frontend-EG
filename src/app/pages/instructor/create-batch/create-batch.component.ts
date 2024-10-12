@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BatchService } from '../../../services/batch.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { error } from 'console';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-batch',
@@ -23,7 +24,7 @@ export class CreateBatchComponent implements OnInit {
     instructorId: '',
     description: '',
   };
-  constructor(public login: LoginService, private router: Router, private batchService: BatchService, private snack: MatSnackBar) { }
+  constructor(public login: LoginService, private router: Router, private batchService: BatchService, private snack: MatSnackBar, private location:Location) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -78,5 +79,8 @@ export class CreateBatchComponent implements OnInit {
         })
       }
     )
+  }
+  goBack(){
+    this.location.back()
   }
 }

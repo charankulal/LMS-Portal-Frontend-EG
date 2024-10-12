@@ -4,17 +4,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../../services/login.service';
+import { SprintService } from '../../../services/sprint.service';
+import { UserService } from '../../../services/user.service';
+import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-batch',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule,MatIconModule],
   templateUrl: './view-batch.component.html',
   styleUrl: './view-batch.component.css'
 })
 export class ViewBatchComponent implements OnInit {
   batch: any = []
-  constructor(private batchService: BatchService, private route: ActivatedRoute, private login: LoginService, private router: Router) { }
+  totalSprints:any
+  enrolledTrainees:any
+  constructor(private batchService: BatchService, private route: ActivatedRoute, private login: LoginService, private router: Router, private sprintService:SprintService, private userService:UserService, private location:Location) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -26,6 +32,21 @@ export class ViewBatchComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching batches:', error);
+      }
+    );
+
+    this.sprintService.getAllSprintsByBatch(this.route.snapshot.paramMap.get('id')).subscribe((data:any)=>{
+      this.totalSprints=data
+    },(error) => {
+      console.error('Error fetching batches:', error);
+    })
+
+    this.userService.getTraineesInBatch(this.route.snapshot.paramMap.get('id')).subscribe(
+      (data: any) => {
+        this.enrolledTrainees = data
+      },
+      (error) => {
+        console.error('Error fetching Trainees:', error);
       }
     );
 
@@ -45,5 +66,9 @@ export class ViewBatchComponent implements OnInit {
 
   viewEnrolledTrainees(id:any){
     this.router.navigate([`${id}/view-trainees`])
+  }
+
+  goBack(){
+    this.location.back()
   }
 }

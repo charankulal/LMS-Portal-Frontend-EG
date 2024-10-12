@@ -55,7 +55,11 @@ export class ViewAllInstructorsComponent implements OnInit {
       })
       
     },(error)=>{
-      window.alert("error")
+      this.snack.open("Internal Server Error!! Try Again", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
     })
   }
   goToDashboard(){

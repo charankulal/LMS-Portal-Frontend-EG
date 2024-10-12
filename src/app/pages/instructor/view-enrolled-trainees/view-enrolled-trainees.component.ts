@@ -5,18 +5,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { LoginService } from '../../../services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-enrolled-trainees',
   standalone: true,
-  imports: [MatButtonModule, MatTableModule],
+  imports: [MatButtonModule, MatTableModule,MatIconModule,MatFormFieldModule,MatInputModule],
   templateUrl: './view-enrolled-trainees.component.html',
   styleUrl: './view-enrolled-trainees.component.css'
 })
 export class ViewEnrolledTraineesComponent implements OnInit {
   trainees: any[] = [];
+  traineesToDisplay: any[] = [];
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar) { }
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
 
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
@@ -26,6 +31,7 @@ export class ViewEnrolledTraineesComponent implements OnInit {
     this.userService.getTraineesInBatch(this.route.snapshot.paramMap.get('id')).subscribe(
       (data: any) => {
         this.trainees = data
+        this.traineesToDisplay=data
       },
       (error) => {
         console.error('Error fetching batches:', error);
@@ -50,5 +56,17 @@ export class ViewEnrolledTraineesComponent implements OnInit {
         })
       }
     )
+  }
+  goBack(){
+    this.location.back()
+  }
+  filterResults(text:string){
+    if (text==null || text == '') {
+      this.traineesToDisplay = this.trainees;
+      return;
+    }
+    this.traineesToDisplay = this.trainees.filter(
+      (sprint:any) => sprint?.fullName.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }

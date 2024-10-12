@@ -48,9 +48,13 @@
                         <button type="submit" mat-raised-button color="primary" class="mx-2">
                             Create Sprint
                         </button>
-                        <button type="reset" mat-raised-button color="accent" class="margin-left">
+                        <button type="reset" mat-raised-button color="accent" class="margin-left mx-2">
                             Clear
                         </button>
+                        <button type="button" mat-stroked-button color="primary" class="" (click)="goBack()">
+                            <mat-icon>arrow_back</mat-icon>  Go Back
+                        </button>
+                        
                     </div>
                 </form>
             </mat-card>
