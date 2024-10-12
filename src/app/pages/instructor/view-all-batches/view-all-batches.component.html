@@ -1,31 +1,32 @@
+<mat-paginator [length]="batches.length" [pageSize]="5"class="paginator"></mat-paginator>
 <div class="container">
-    <h2>Batch Details</h2>
-    <table mat-table [dataSource]="batches" class="mat-elevation-z8">
+    <h2 class="title">Batch Details</h2>
+    <div class="table-responsive"></div>
+    <table mat-table [dataSource]="batches" class="mat-elevation-z8 table">
         <ng-container matColumnDef="Sl No">
-            <th mat-header-cell *matHeaderCellDef> Sl No </th>
-            <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+            <th mat-header-cell *matHeaderCellDef class="header-cell"> Sl No </th>
+            <td mat-cell *matCellDef="let element; let i = index" class="cell"> {{i + 1}} </td>
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let batch"> {{batch.name}} </td>
+            <th mat-header-cell *matHeaderCellDef class="header-cell"> Name </th>
+            <td mat-cell *matCellDef="let batch" class="cell"> {{batch.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef class="description-column"> Description </th>
-            <td mat-cell *matCellDef="let batch" class="description-column"> {{batch.description}} </td>
+            <th mat-header-cell *matHeaderCellDef class="header-cell description-column"> Description </th>
+            <td mat-cell *matCellDef="let batch" class="cell description-column"> {{batch.description}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef> Actions </th>
-            <td mat-cell *matCellDef="let batch">
-              <button mat-raised-button color="primary" (click)="viewBatch(batch.id)">View</button>
-              <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)" >Update</button>
-              <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)" >Delete</button>
+            <th mat-header-cell *matHeaderCellDef class="header-cell"> Actions </th>
+            <td mat-cell *matCellDef="let batch" class="cell actions-cell">
+              <button mat-raised-button color="primary" (click)="viewBatch(batch.id)"matTooltip="View Batch">View</button>
+              <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)"matTooltip="Update Batch" >Update</button>
+              <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)"matTooltip="Delete Batch" >Delete</button>
             </td>
           </ng-container>
-          
-
+        
         <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

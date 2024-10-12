@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../../services/login.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-view-all-batches',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule],
+  imports: [MatTableModule, MatButtonModule, MatPaginatorModule],
   templateUrl: './view-all-batches.component.html',
   styleUrl: './view-all-batches.component.css'
 })
