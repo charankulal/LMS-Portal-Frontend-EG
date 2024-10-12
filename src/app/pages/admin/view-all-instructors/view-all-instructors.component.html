@@ -14,7 +14,7 @@
       </div>
   
       <h1 class="text-center fs-1 mb-4">View All Instructors</h1>
-  
+  @if (instructorsToDisplay.length>0) {
       <table mat-table [dataSource]="instructorsToDisplay" class="mat-elevation-z8">
         <ng-container matColumnDef="Sl No">
           <th mat-header-cell *matHeaderCellDef> Sl No </th>
@@ -47,6 +47,14 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+    }
+    @else {
+        <h3 class="text-center fs-3 mb-4">
+            No instructors are currently available! 
+            <a [routerLink]="['/create-instructor']" routerLinkActive="router-link-active">Click here</a> to create a new instructor.
+          </h3>
+          
+    }
     </div>
   </div>
   
