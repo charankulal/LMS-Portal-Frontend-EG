@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { LoginService } from '../../../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { JsonPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-view-trainees',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, JsonPipe, MatCardModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, JsonPipe, MatCardModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule,RouterLink],
   templateUrl: './view-trainees.component.html',
   styleUrl: './view-trainees.component.css'
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-view-all-instructors',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [MatTableModule, MatButtonModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule, RouterLink],
   templateUrl: './view-all-instructors.component.html',
   styleUrl: './view-all-instructors.component.css'
 })
