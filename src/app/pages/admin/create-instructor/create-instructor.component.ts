@@ -5,18 +5,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../../../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-instructor',
   standalone: true,
-  imports: [MatCardModule,FormsModule,MatFormFieldModule,MatInputModule,MatButtonModule],
+  imports: [MatCardModule,FormsModule,MatFormFieldModule,MatInputModule,MatButtonModule, MatSidenavModule, RouterLink, MatProgressBarModule, NgIf],
   templateUrl: './create-instructor.component.html',
   styleUrl: './create-instructor.component.css'
 })
 export class CreateInstructorComponent implements OnInit{
+  toggle:boolean=false
   userData={
     fullname:'',
     password:'',
@@ -34,6 +38,7 @@ export class CreateInstructorComponent implements OnInit{
   }
 
   formSubmit() {
+    this.toggle=true
     if (this.userData.fullname.trim() == '' || this.userData.fullname == null) {
       this.snack.open("Name is required!!", 'OK', {
         duration: 3000,

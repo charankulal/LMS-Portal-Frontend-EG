@@ -5,16 +5,21 @@ import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-view-all-instructors',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule],
+  imports: [MatTableModule, MatButtonModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './view-all-instructors.component.html',
   styleUrl: './view-all-instructors.component.css'
 })
 export class ViewAllInstructorsComponent implements OnInit {
   instructors: any[] = [];
+  instructorsToDisplay: any[]=[]
 
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email',  'actions'];
   constructor(private login: LoginService, private router: Router, private userservice: UserService, private snack:MatSnackBar) { }
@@ -27,7 +32,7 @@ export class ViewAllInstructorsComponent implements OnInit {
     this.userservice.getAllInstructors().subscribe(
       (data: any) => {
         this.instructors = data;
-        console.log(this.instructors)
+        this.instructorsToDisplay=data
       },
       (error) => {
         console.error('Error fetching batches:', error);
@@ -40,8 +45,8 @@ export class ViewAllInstructorsComponent implements OnInit {
   }
 
   deleteInstructor(id:any){
-    
     this.userservice.deleteInstructor(id).subscribe((data:any)=>{
+      this.instructorsToDisplay = this.instructorsToDisplay.filter((instructor:any)=> instructor.id!=id)
       this.instructors = this.instructors.filter((instructor:any)=> instructor.id!=id)
       this.snack.open("Instructor Deleted successfully!", 'OK', {
         duration: 3000,
@@ -55,5 +60,15 @@ export class ViewAllInstructorsComponent implements OnInit {
   }
   goToDashboard(){
     this.router.navigate(['admin-dashboard'])
+  }
+
+  filterResults(text:string){
+    if (text==null || text == '') {
+      this.instructorsToDisplay = this.instructors;
+      return;
+    }
+    this.instructorsToDisplay = this.instructors.filter(
+      instructor => instructor?.fullName.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }

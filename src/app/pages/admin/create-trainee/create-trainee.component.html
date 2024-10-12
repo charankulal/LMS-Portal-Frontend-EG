@@ -1,17 +1,21 @@
 <div class="container">
-    <div class="sidebar">
+    <mat-sidenav class="sidebar" mode="side" opened>
         <ul>
-          <li><a [href]="['/create-trainee']"><div class="add" >
-            <button mat-stroked-button class="btns btn-primary text-dark">Create Trainee</button>
-          </div></a></li>
-          <li><a [href]="['/view-all-trainees']"><div class="view" >
-            <button mat-stroked-button class="btns btn-primary text-dark">View All Trainees</button>
-          </div></a></li>
-         
+          <li>
+            <a mat-button [routerLink]="['/view-all-trainees']">View All Trainees</a>
+          </li>
+          <li>
+            <a mat-button [routerLink]="['/create-instructor']">Create Instructor</a>
+          </li>
+          <li>
+            <a mat-button [routerLink]="['/view-all-instructors']">View All Instructors</a>
+          </li>
         </ul>
-      </div>
+      </mat-sidenav>
 <div class="row">
     <div class="col-md-8 offset-md-2 my-2">
+        <mat-progress-bar mode="buffer" class="my-2" *ngIf="toggle"></mat-progress-bar>
+
         <mat-card class="bg-primary">
             <h1 class="text-center my-3">Create New Trainee</h1>
             <form (ngSubmit)="formSubmit()">

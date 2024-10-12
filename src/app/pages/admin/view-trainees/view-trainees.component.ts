@@ -5,19 +5,23 @@ import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { JsonPipe } from '@angular/common';
-import { DataSource } from '@angular/cdk/collections';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-view-trainees',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, JsonPipe],
+  imports: [MatTableModule, MatButtonModule, JsonPipe, MatCardModule,FormsModule,MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './view-trainees.component.html',
   styleUrl: './view-trainees.component.css'
 })
 export class ViewTraineesComponent implements OnInit {
   trainees: any[] = [];
-
+  traineesToDisplay:any[]=[]
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
   constructor(private login: LoginService, private router: Router, private userservice: UserService, private snack:MatSnackBar) { }
   ngOnInit(): void {
@@ -29,7 +33,7 @@ export class ViewTraineesComponent implements OnInit {
     this.userservice.getAllTrainees().subscribe(
       (data: any) => {
         this.trainees = data;
-        console.log(this.trainees)
+        this.traineesToDisplay=data
       },
       (error) => {
         console.error('Error fetching batches:', error);
@@ -42,8 +46,8 @@ export class ViewTraineesComponent implements OnInit {
   }
 
   deleteTrainee(id:any){
-    
     this.userservice.deleteTrainee(id).subscribe((data:any)=>{
+      this.traineesToDisplay = this.traineesToDisplay.filter((trainee:any)=> trainee.id!=id)
       this.trainees = this.trainees.filter((trainee:any)=> trainee.id!=id)
       this.snack.open("Trainee Deleted successfully!", 'OK', {
         duration: 3000,
@@ -57,6 +61,15 @@ export class ViewTraineesComponent implements OnInit {
   }
   goToDashboard(){
     this.router.navigate(['admin-dashboard'])
+  }
+  filterResults(text:string){
+    if (text==null || text == '') {
+      this.traineesToDisplay = this.trainees;
+      return;
+    }
+    this.traineesToDisplay = this.trainees.filter(
+      trainee => trainee?.fullName.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }
 

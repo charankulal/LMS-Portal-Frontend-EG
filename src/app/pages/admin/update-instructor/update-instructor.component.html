@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2 my-2">
             <mat-card>
-                <h1 class="text-center my-3">Update Trainee</h1>
+                <h1 class="text-center my-3">Update Instructor</h1>
                 <form (ngSubmit)="formSubmit()">
     
                     <!-- full name Field -->
@@ -28,11 +28,14 @@
     
     
                     <div class="butn container text-center margin my-3">
-                        <button type="submit" mat-raised-button color="primary" class="mx-2">
+                        <button type="submit" mat-raised-button color="primary" >
                             Update
                         </button>
-                        <button type="reset" mat-raised-button color="accent" class="margin-left">
+                        <button type="reset" mat-raised-button color="accent" class="margin-left mx-2">
                             Clear
+                        </button>
+                        <button type="reset" color="accent" class="margin-left btn btn-secondary" (click)="goBack()">
+                            Go Back
                         </button>
                     </div>
                 </form>
