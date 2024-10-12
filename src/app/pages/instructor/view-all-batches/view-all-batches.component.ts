@@ -6,19 +6,23 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../../services/login.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { Location, NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-view-all-batches',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatPaginatorModule],
+  imports: [MatTableModule, MatButtonModule, MatPaginatorModule,MatCardModule,NgFor,MatIconModule,MatFormFieldModule,MatInputModule],
   templateUrl: './view-all-batches.component.html',
   styleUrl: './view-all-batches.component.css'
 })
 export class ViewAllBatchesComponent implements OnInit{
-  batches: any = [];
-  
-  displayedColumns: string[] = ["Sl No", 'name', 'description','actions'];
-  constructor(private batchService: BatchService,private snack:MatSnackBar, private router: Router,private  login:LoginService) { }
+  batches: any[] = [];
+  batchesToDisplay:any[]=[]
+  constructor(private batchService: BatchService,private snack:MatSnackBar, private router: Router,private  login:LoginService, private location:Location) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -28,10 +32,14 @@ export class ViewAllBatchesComponent implements OnInit{
     this.batchService.getAllBatchesCreatedByInstructor(id).subscribe(
       (data: any) => {
         this.batches = data;
-        console.log(this.batches)
+        this.batchesToDisplay=data
       },
       (error) => {
-        console.error('Error fetching batches:', error);
+        this.snack.open("Internal Sever Error!", 'OK', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+        })
       }
     );
   }
@@ -54,6 +62,7 @@ export class ViewAllBatchesComponent implements OnInit{
       headers: new Headers(headerDict),
     };
     this.batchService.deleteBatch(id, requestOptions).subscribe((data:any)=>{
+      this.batchesToDisplay = this.batchesToDisplay.filter((batch:any)=> batch.id!=id)
       this.batches = this.batches.filter((batch:any)=> batch.id!=id)
       this.snack.open("Batch Deleted successfully!", 'OK', {
         duration: 3000,
@@ -62,7 +71,23 @@ export class ViewAllBatchesComponent implements OnInit{
       })
       this.router.navigate(["/view-all-batches"])
     },(error)=>{
-      window.alert("error")
+      this.snack.open("Internal Sever Error!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
     })
+  }
+  goToDashboard(){
+    this.location.back()
+  }
+  filterResults(text:string){
+    if (text==null || text == '') {
+      this.batchesToDisplay = this.batches;
+      return;
+    }
+    this.batchesToDisplay = this.batches.filter(
+      (batch:any) => batch?.name.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }

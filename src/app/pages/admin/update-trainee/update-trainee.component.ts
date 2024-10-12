@@ -34,9 +34,13 @@ ngOnInit(): void {
 
   this.userService.getTraineeById(this.route.snapshot.paramMap.get('id')).subscribe((data:any)=>{
     this.userData=data
-    console.log(this.userData)
+    
   },(error)=>{
-    console.log(error)
+    this.snack.open("Internal Sever Error!", 'OK', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    })
   })
 }
 

@@ -31,7 +31,6 @@ export class BatchService {
   public getUser()
   {
     let userString=window.localStorage.getItem('user')
-    // console.log(userString)
     if(userString!=null)
     {
       return JSON.parse(userString)

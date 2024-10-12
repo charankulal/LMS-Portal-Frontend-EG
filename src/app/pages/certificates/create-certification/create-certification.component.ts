@@ -8,16 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CertificateService } from '../../../services/certificate.service';
 import { LoginService } from '../../../services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-certification',
   standalone: true,
-  imports: [FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   templateUrl: './create-certification.component.html',
   styleUrl: './create-certification.component.css'
 })
 export class CreateCertificationComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router, private certificateService: CertificateService, private login: LoginService, private snack: MatSnackBar) { }
+  constructor(private route: ActivatedRoute, private router: Router, private certificateService: CertificateService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
   certificate = {
     sprintId: this.route.snapshot.paramMap.get('id'),
     name: '',
@@ -47,5 +49,9 @@ export class CreateCertificationComponent implements OnInit {
         horizontalPosition: 'center',
       })
     })
+  }
+
+  goBack(){
+    this.location.back()
   }
 }

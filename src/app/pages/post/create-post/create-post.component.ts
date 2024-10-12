@@ -9,17 +9,19 @@ import { PostService } from '../../../services/post.service';
 import { LoginService } from '../../../services/login.service';
 import { SprintService } from '../../../services/sprint.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css'
 })
 export class CreatePostComponent implements OnInit{
   
-  constructor(private router:Router, private postService:PostService, private login:LoginService, private route: ActivatedRoute, private snack: MatSnackBar){}
+  constructor(private router:Router, private postService:PostService, private login:LoginService, private route: ActivatedRoute, private snack: MatSnackBar, private location:Location){}
   post={
     sprintId:this.route.snapshot.paramMap.get('id'),
     title:'',
@@ -47,5 +49,8 @@ export class CreatePostComponent implements OnInit{
         horizontalPosition: 'center',
       })
   })
+  }
+  goBack(){
+    this.location.back()
   }
 }

@@ -1,98 +1,155 @@
-.Main-content{
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-
-
-}
-  /* Existing styles */
-.head {
-  text-align: center;
-}
-.sidebar {
-  grid-area: sidebar;
-  min-width: 20px;
-  background-color: rgb(242, 243, 244);
-  padding: 0px;
-  height: 150vh;
-  display: flex;
-  position: fixed;
-  overflow-y: auto;
-  left: 0px;
-  top: 60px;
-}
-.main-content {
-  margin-left: 220px;
-  padding: 20px;
-  flex-grow: 1;
-}
-.h-100 {
+.h-100{
   height: 10rem !important;
 }
-.icon {
+
+.icon{
   position: absolute;
   top: 15px;
   right: 20px;
+  
 }
+.bg-grey{
+  background-color: rgb(212, 214, 215);
+}
+
+.offset-1{
+  /* position: absolute; */
+  left: 15%;
+}
+
+
+/* Sidebar */
+.head{
+  text-align: center;
+}
+.sidebar {
+width: 17vw; /* Width of the sidebar */
+  background-color: rgb(248, 249, 250);
+  height: 91vh; /* Full height */
+  position: absolute;
+  overflow-y: auto; /* Scroll if necessary */
+  left: 0px;
+  top: 60px;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 100px; /* Space for the sidebar */
+  padding: 20px; /* Padding for the main content */
+  flex-grow: 1; /* Allow main content to grow */
+}
+
+/* Other Styles */
+.h-100 {
+  height: 10rem !important;
+}
+
+.icon {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
 .bg-grey {
-  background-color: rgb(182, 235, 251);
+  background-color: rgb(220, 222, 224);
 }
+
 .add {
   margin-top: 20px;
 }
+
 .view {
   margin-top: 20px;
+
+  /* Adjust margin instead of absolute positioning */
 }
+
 .btns {
   height: 40px;
-  width: 200px;
-  background-color: rgb(145, 146, 146);
+  width: 214px;
+  left: 30px;
+  color: black;
+  background-color: rgb(243, 243, 243);
   font-size: large;
-  border-radius: 8px;
+  left: 0%;
+  right: 2px;
 }
+
 .container {
   display: flex;
-}
-.buton {
-  display: flex;
-  background-color: rgb(181, 183, 183);
-  transition: background-color 0.3s ease;
-}
-.sidebar .btns:hover {
-  background-color: rgb(123, 127, 128) !important;
-  color: white;
-}
-.buton {
+}  
+.buton{
   display: flex;
 }
 .sidebar ul li a {
+  
   list-style: none;
-  text-decoration: none;
-}
+  text-decoration: none; /* Remove underline */
+}  
 ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  list-style-type: none; /* Removes the bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+.sidebar .btns:hover {
+  background-color: rgb(186, 186, 191) !important;
+  color: white;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-  }
-  .main-content {
-      margin-left: 0;
-  }
-  .btns {
-      width: 100%;
-  }
-  .container {
-      flex-direction: column;
-  }
-  .col-md-5 {
-      width: 90%;
-      margin: 10px 0;
-  }
+.sidenav-container {
+  height: 100%;
+  
+}
+
+.sidebar {
+  width: 250px; /* Set width of the sidebar */
+  background-color: #f8f9fa; /* Light background color */
+  
+}
+
+.sidebar ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.sidebar li {
+  margin: 10px 0; /* Space between items */
+
+}
+
+.sidebar a {
+  text-decoration: none; /* Remove underline from links */
+  font-size: large;
+  color: #343a40; /* Dark text color */
+  width: 100%; /* Full width for the button */
+  margin-top: 3%;
+}
+
+.sidebar a:hover {
+  background-color: #e9ecef; /* Hover effect */
+}
+.main-content {
+padding: 20px; /* Add padding to the main content */
+}
+
+.head {
+color: #343a40; /* Dark color for the heading */
+}
+
+.bg-light {
+background-color: #f8f9fa !important; /* Light background for cards */
+}
+
+.shadow-sm {
+box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); /* Subtle shadow for cards */
+}
+
+.icon {
+font-size: 24px; /* Larger icons */
+vertical-align: middle; /* Align icons vertically */
+}
+
+.insights{
+margin-top: 4px;
+font-size: 50pt;
 }
