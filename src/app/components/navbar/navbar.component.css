@@ -1,21 +1,8 @@
-.nav-btn-title{
-    margin-left: 360px;
-    border-radius: 10px;
-    background-color: black;
-    width: 90px;
-    color: white;
-   text-decoration: none;
-   display: inline-block;
-   justify-content: center; 
-  align-items: center; 
-  text-align: center;
+.example-spacer {
+  flex: 1 1 content;
 }
-.login-btn{
-  left: 50rem;
-  top: 0px;
-}
-.right{
-  position: relative;
-  left: 45rem;
-  top: 0px;
+
+.logout-btn{
+  position: absolute;
+  right: 10px;
 }

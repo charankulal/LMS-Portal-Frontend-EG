@@ -52,8 +52,8 @@ export class BatchService {
     return this.http.put(`${baseUrl}/api/batches/${id}`,data)
   }
 
-  // get certification details
-  public getCertificationDetails(){
-    
+  // get all batches
+  public getAllBatches(){
+    return this.http.get(`${baseUrl}/api/batches`)
   }
 }

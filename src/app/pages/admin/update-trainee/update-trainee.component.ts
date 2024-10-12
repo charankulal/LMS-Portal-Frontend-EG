@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-trainee',
@@ -24,7 +25,7 @@ export class UpdateTraineeComponent implements OnInit{
     role:'Trainee',
     points:0
   }
-  constructor(public login: LoginService, private router: Router, private userService: UserService, private snack: MatSnackBar, private route: ActivatedRoute) { }
+  constructor(public login: LoginService, private router: Router, private userService: UserService, private snack: MatSnackBar, private route: ActivatedRoute, private location: Location) { }
 ngOnInit(): void {
   if (!this.login.isLoggedIn() || this.login.getUserRole() != "Admin") {
     this.login.logout()
@@ -78,4 +79,7 @@ formSubmit(){
     }
   )
 }
+goBack(){
+  this.location.back()
+  }
 }

@@ -33,4 +33,9 @@ export class CertificateService {
   public deleteCertificateById(id:any){
     return this.http.delete(`${baseUrl}/api/certificate/delete-certificate/${id}`)
   }
+
+  // get all certificates
+  public getAllCertificates(){
+    return this.http.get(`${baseUrl}/api/certificate/all`)
+  }
 }

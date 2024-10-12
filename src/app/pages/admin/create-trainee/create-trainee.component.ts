@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
-import { Router } from '@angular/router';
-import { BatchService } from '../../../services/batch.service';
+import { Router, RouterLink } from '@angular/router';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
@@ -9,15 +9,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../../services/user.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-trainee',
   standalone: true,
-  imports: [MatCardModule,FormsModule,MatFormFieldModule,MatInputModule,MatButtonModule],
+  imports: [MatCardModule,FormsModule,MatFormFieldModule,MatInputModule,MatButtonModule, MatSidenavModule,RouterLink, MatIconModule, MatSelectModule, MatProgressBarModule, NgIf],
   templateUrl: './create-trainee.component.html',
   styleUrl: './create-trainee.component.css'
 })
 export class CreateTraineeComponent implements OnInit {
+  toggle:boolean=false
   userData={
     fullname:'',
     password:'',
@@ -35,6 +40,7 @@ export class CreateTraineeComponent implements OnInit {
   }
 
   formSubmit() {
+    this.toggle=true
     if (this.userData.fullname.trim() == '' || this.userData.fullname == null) {
       this.snack.open("Name is required!!", 'OK', {
         duration: 3000,

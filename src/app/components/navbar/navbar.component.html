@@ -1,35 +1,23 @@
 <p>
-  <mat-toolbar color="secondary">
-    <button
-      mat-icon-button
-      class="example-icon"
-    >
+<mat-toolbar color="secondary">
+  <div class="d-flex align-items-center">
+    <button mat-icon-button class="example-icon">
       <mat-icon>menu_book</mat-icon>
     </button>
     <a routerLink="/" class="nav-heading mx-2 text-decoration-none">Learning Management System</a>
-    <span class="example-spacer"></span>
-    <a
-    *ngIf="!login.isLoggedIn()"
-      [routerLink]="'/login'"
-      mat-icon-button
-      class="example-icon favorite-icon"
-    >
-      <!-- <span class="btn btn-outline-dark">Login</span>
-        -->
-
-        <button mat-raised-button color="accent" class="login-btn" >Login</button>
+  </div>
+  <span class="example-spacer"></span>
+  <ng-container *ngIf="!login.isLoggedIn(); else loggedInTemplate">
+    <a routerLink="/login" >
+      <button mat-raised-button color="accent">Login</button>
     </a>
-    
-    <a
-    *ngIf="login.isLoggedIn()"
-    (click)="logout()"
-      [routerLink]="''"
-      mat-icon-button
-      class="example-icon"
-    >
-      <span class="btn btn-primary right">Logout</span>
+  </ng-container>
+  <ng-template #loggedInTemplate>
+    <a (click)="logout()" mat-icon-button >
+      <button mat-raised-button color="accent" class="logout-btn">Logout</button>
     </a>
+  </ng-template>
 
-  </mat-toolbar>
+
+</mat-toolbar>
 </p>
-  

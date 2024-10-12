@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-instructor',
@@ -24,7 +25,7 @@ export class UpdateInstructorComponent implements OnInit{
     role:'Instructor',
     points:0
   }
-  constructor(public login: LoginService, private router: Router, private userService: UserService, private snack: MatSnackBar, private route: ActivatedRoute) { }
+  constructor(public login: LoginService, private router: Router, private userService: UserService, private snack: MatSnackBar, private route: ActivatedRoute, private location: Location) { }
 ngOnInit(): void {
   if (!this.login.isLoggedIn() || this.login.getUserRole() != "Admin") {
     this.login.logout()
@@ -77,5 +78,8 @@ formSubmit(){
       alert(error)
     }
   )
+}
+goBack(){
+this.location.back()
 }
 }
