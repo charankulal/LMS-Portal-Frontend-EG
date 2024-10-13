@@ -11,11 +11,12 @@ import { Location, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-view-all-batches',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatPaginatorModule,MatCardModule,NgFor,MatIconModule,MatFormFieldModule,MatInputModule],
+  imports: [MatTableModule, MatButtonModule, MatPaginatorModule,MatCardModule,NgFor,MatIconModule,MatFormFieldModule,MatInputModule,MatTooltipModule],
   templateUrl: './view-all-batches.component.html',
   styleUrl: './view-all-batches.component.css'
 })
@@ -89,5 +90,8 @@ export class ViewAllBatchesComponent implements OnInit{
     this.batchesToDisplay = this.batches.filter(
       (batch:any) => batch?.name.toLowerCase().includes(text.toLowerCase())
     );
+  }
+  goToAnnouncement(id:any){
+    this.router.navigate([`announcement/${id}`])
   }
 }

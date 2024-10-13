@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-8 offset-md-2 my-2">
+        <mat-progress-bar mode="buffer" class="my-2" *ngIf="toggle"></mat-progress-bar>
+
+        <mat-card class="bg-light">
+            <h1 class="text-center my-3">Announce to your batch</h1>
+            <form (ngSubmit)="formSubmit()">
+
+                <!-- Subject Field -->
+                <mat-form-field class="full-width margin col-md-8 offset-md-2 my-3 " appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <input required matInput placeholder="Enter Subject" name="subject" type="text"
+                        [(ngModel)]="announcement.subject" [ngModelOptions]="{ standalone: true }" />
+                </mat-form-field>
+
+                <!-- Message field -->
+                <mat-form-field class="full-width margin col-md-8 offset-md-2 my-2" appearance="outline">
+                    <mat-label>Message</mat-label>
+                    <textarea  matInput placeholder="Enter Message" name="message"
+                        [(ngModel)]="announcement.message" [ngModelOptions]="{ standalone: true }" rows="5" required></textarea>
+                </mat-form-field>
+
+
+                <div class="butn container text-center margin my-3">
+                    <button type="submit" mat-raised-button color="primary" class="mx-2">
+                        Announce
+                    </button>
+                    <button type="reset"  mat-raised-button color="accent" class="margin-left" (click)="goBack()">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>
