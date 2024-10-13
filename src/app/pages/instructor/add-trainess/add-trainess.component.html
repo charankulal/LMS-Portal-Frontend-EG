@@ -21,6 +21,7 @@
             <h2>All Trainees</h2>
 
         </div>
+        <mat-progress-bar mode="buffer" class="my-2" *ngIf="toggle"></mat-progress-bar>
         <table mat-table [dataSource]="traineesToDisplay" class="mat-elevation-z8"
             style="background-color: rgb(219, 226, 226); ">
             <ng-container matColumnDef="Sl No">

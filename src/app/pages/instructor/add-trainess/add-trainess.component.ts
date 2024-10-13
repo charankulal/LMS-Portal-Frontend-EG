@@ -8,12 +8,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-add-trainess',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule, MatProgressBar,NgIf],
   templateUrl: './add-trainess.component.html',
   styleUrl: './add-trainess.component.css'
 })
@@ -21,6 +22,7 @@ export class AddTrainessComponent implements OnInit {
   trainees: any[] = [];
   traineesToDisplay: any[] = [];
   user:any
+  toggle=false
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Email', 'Points', 'actions'];
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location: Location) { }
 
@@ -41,7 +43,9 @@ export class AddTrainessComponent implements OnInit {
   }
 
   AddTraineeToBatch(id: any) {
+    this.toggle=true
     this.userService.addTraineeToBatch(this.route.snapshot.paramMap.get('id'), id).subscribe((data: any) => {
+      this.toggle=false
       this.trainees = this.trainees.filter((trainee: any) => trainee.id != id)
       this.traineesToDisplay = this.traineesToDisplay.filter((trainee: any) => trainee.id != id)
       this.snack.open("Trainee Added to batch successfully!", 'OK', {
