@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, NgModel } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-batch',
@@ -18,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UpdateBatchComponent implements OnInit {
   batch: any = []
-  constructor(private login:LoginService, private batchService: BatchService,private router:Router,private route:ActivatedRoute, private snack : MatSnackBar){}
+  constructor(private login:LoginService, private batchService: BatchService,private router:Router,private route:ActivatedRoute, private snack : MatSnackBar, private location:Location){}
   ngOnInit(): void {
 
     this.batchService.getBatchById(this.route.snapshot.paramMap.get('id')).subscribe((data:any)=>{
@@ -40,6 +41,7 @@ export class UpdateBatchComponent implements OnInit {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
         })
+        this.router.navigate([`view-all-batches`])
       },
       (error)=>{
         this.snack.open("Internal Sever Error!", 'OK', {
@@ -51,4 +53,7 @@ export class UpdateBatchComponent implements OnInit {
     )
   }
 
+  goBack(){
+    this.location.back()
+  }
 }

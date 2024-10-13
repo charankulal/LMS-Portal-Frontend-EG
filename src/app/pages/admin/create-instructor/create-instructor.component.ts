@@ -55,6 +55,18 @@ export class CreateInstructorComponent implements OnInit{
       })
       return;
     }
+    if (this.userData.password.length <8 || 
+      !/[A-Za-z]/.test(this.userData.password) ||
+      !/[0-9]/.test(this.userData.password) ||     
+      !/[!@#$%&*]/.test(this.userData.password) 
+  ) {
+    this.snack.open("Password must be at least 8 characters long, and include letters, numbers, and special characters.", 'OK', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
+    return;
+  }
     if (this.userData.email.trim() == '' || this.userData.email == null) {
       this.snack.open("Email is required!!", 'OK', {
         duration: 3000,

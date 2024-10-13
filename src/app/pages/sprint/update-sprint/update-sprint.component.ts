@@ -55,6 +55,7 @@ this.sprintService.updateSprintById(this.route.snapshot.paramMap.get('id'),this.
     verticalPosition: 'bottom',
     horizontalPosition: 'center',
   })
+  this.location.back()
 },(error)=>{
   this.snack.open("Internal Server Error!", 'Ok', {
     duration: 3000,

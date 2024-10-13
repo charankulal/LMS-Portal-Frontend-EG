@@ -48,6 +48,7 @@ this.postService.updatePostById(this.route.snapshot.paramMap.get('id'),this.post
     verticalPosition: 'bottom',
     horizontalPosition: 'center',
   })
+  this.location.back()
 },(error)=>{
   this.snack.open("Internal Server Error! Try Again", 'Ok', {
     duration: 3000,

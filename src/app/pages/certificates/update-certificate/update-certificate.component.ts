@@ -51,6 +51,7 @@ export class UpdateCertificateComponent implements OnInit {
         verticalPosition: 'bottom',
         horizontalPosition: 'center',
       })
+      this.location.back()
     },(error)=>{
       this.snack.open("Internal server error", 'Ok', {
         duration: 3000,
