@@ -35,6 +35,22 @@ export class CreatePostComponent implements OnInit{
   }
 
   formSubmit(){
+    if (this.post.title.trim() == '' || this.post.title == null) {
+      this.snack.open("Name is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
+    if (this.post.description.trim() == '' || this.post.description == null) {
+      this.snack.open("Description is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
     this.postService.createPost(this.post).subscribe((data:any)=>{
       this.snack.open("New Post Created!", 'Ok', {
         duration: 3000,
