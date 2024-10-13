@@ -20,7 +20,7 @@ import { Location } from '@angular/common';
 export class AddTrainessComponent implements OnInit {
   trainees: any[] = [];
   traineesToDisplay: any[] = [];
-  displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
+  displayedColumns: string[] = ["Sl No", 'Full Name', 'Email', 'Points', 'actions'];
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location: Location) { }
 
   ngOnInit(): void {
