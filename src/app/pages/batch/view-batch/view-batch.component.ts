@@ -20,6 +20,7 @@ export class ViewBatchComponent implements OnInit {
   batch: any = []
   totalSprints:any
   enrolledTrainees:any
+  user:any
   constructor(private batchService: BatchService, private route: ActivatedRoute, private login: LoginService, private router: Router, private sprintService:SprintService, private userService:UserService, private location:Location) { }
   ngOnInit(): void {
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
@@ -70,5 +71,10 @@ export class ViewBatchComponent implements OnInit {
 
   goBack(){
     this.location.back()
+  }
+
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

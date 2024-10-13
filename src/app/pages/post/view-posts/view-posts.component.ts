@@ -22,7 +22,7 @@ export class ViewPostsComponent implements OnInit {
   posts: any
   postsToDisplay:any
   sprint: any
-
+  user:any
   constructor(private router: Router, private route: ActivatedRoute, private sprintService: SprintService, private postService: PostService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
   ngOnInit(): void {
     // login and role validation : use login service
@@ -88,5 +88,9 @@ export class ViewPostsComponent implements OnInit {
     this.postsToDisplay = this.posts.filter(
       (post:any) => post?.title.toLowerCase().includes(text.toLowerCase())
     );
+  }
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

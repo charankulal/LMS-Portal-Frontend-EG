@@ -22,7 +22,7 @@ export class ViewCertificationsComponent implements OnInit{
   certificates: any
   certificatesToDisplay: any
   sprint: any
-
+  user: any
   constructor(private router: Router, private route: ActivatedRoute, private sprintService: SprintService, private certificateService: CertificateService, private login: LoginService, private snack:MatSnackBar, private location:Location){}
   
   ngOnInit(): void {
@@ -89,5 +89,9 @@ export class ViewCertificationsComponent implements OnInit{
     this.certificatesToDisplay = this.certificates.filter(
       (certificate:any) => certificate?.name.toLowerCase().includes(text.toLowerCase())
     );
+  }
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

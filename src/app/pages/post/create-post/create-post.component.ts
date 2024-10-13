@@ -20,7 +20,7 @@ import { Location } from '@angular/common';
   styleUrl: './create-post.component.css'
 })
 export class CreatePostComponent implements OnInit{
-  
+  user:any
   constructor(private router:Router, private postService:PostService, private login:LoginService, private route: ActivatedRoute, private snack: MatSnackBar, private location:Location){}
   post={
     sprintId:this.route.snapshot.paramMap.get('id'),
@@ -52,5 +52,9 @@ export class CreatePostComponent implements OnInit{
   }
   goBack(){
     this.location.back()
+  }
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

@@ -19,6 +19,7 @@ import { Location } from '@angular/common';
   styleUrl: './create-certification.component.css'
 })
 export class CreateCertificationComponent implements OnInit {
+  user:any
   constructor(private route: ActivatedRoute, private router: Router, private certificateService: CertificateService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
   certificate = {
     sprintId: this.route.snapshot.paramMap.get('id'),
@@ -53,5 +54,9 @@ export class CreateCertificationComponent implements OnInit {
 
   goBack(){
     this.location.back()
+  }
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }
