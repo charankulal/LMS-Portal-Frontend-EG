@@ -39,6 +39,22 @@ export class UpdateBatchComponent implements OnInit {
   }
 
   formSubmit(){
+    if (this.batch.name.trim() == '' || this.batch.name == null) {
+      this.snack.open("Name is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
+    if (this.batch.description.trim() == '' || this.batch.description == null) {
+      this.snack.open("Description is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
     this.batchService.UpdateBatch(this.route.snapshot.paramMap.get('id'),this.batch).subscribe(
       (data:any)=>{
         this.snack.open("Batch Details are updated", 'OK', {

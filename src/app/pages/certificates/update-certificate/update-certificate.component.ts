@@ -45,6 +45,22 @@ export class UpdateCertificateComponent implements OnInit {
   
 
   formSubmit() {
+    if (this.certificate.name.trim() == '' || this.certificate.name == null) {
+      this.snack.open("Name is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
+    if (this.certificate.description.trim() == '' || this.certificate.description == null) {
+      this.snack.open("Description is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
     this.certificateService.updateCertificateById(this.route.snapshot.paramMap.get('id'),this.certificate).subscribe((data:any)=>{
       this.snack.open("Certiifcate is Updated", 'Ok', {
         duration: 3000,

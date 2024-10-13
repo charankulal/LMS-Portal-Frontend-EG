@@ -37,6 +37,22 @@ export class CreateCertificationComponent implements OnInit {
   }
 
   formSubmit() {
+    if (this.certificate.name.trim() == '' || this.certificate.name == null) {
+      this.snack.open("Name is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
+    if (this.certificate.description.trim() == '' || this.certificate.description == null) {
+      this.snack.open("Description is required!!", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
     this.certificateService.createCertificate(this.certificate).subscribe((data:any)=>{
       this.snack.open("New Certificate Created!", 'Ok', {
         duration: 3000,
