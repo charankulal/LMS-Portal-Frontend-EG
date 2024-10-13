@@ -33,4 +33,9 @@ export class PostService {
   public deletePostById(id:any){
     return this.http.delete(`${baseUrl}/api/posts/delete-post/${id}`)
   }
+
+  // add new announcement
+  public announceToTrainees(data:any){
+    return this.http.post(`${baseUrl}/api/posts/announcement`,data)
+  }
 }

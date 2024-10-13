@@ -25,6 +25,7 @@ import { UpdateTraineeComponent } from './pages/admin/update-trainee/update-trai
 import { CreateInstructorComponent } from './pages/admin/create-instructor/create-instructor.component';
 import { UpdateInstructorComponent } from './pages/admin/update-instructor/update-instructor.component';
 import { ViewAllInstructorsComponent } from './pages/admin/view-all-instructors/view-all-instructors.component';
+import { AnnouncementComponent } from './pages/instructor/announcement/announcement.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -53,6 +54,7 @@ export const routes: Routes = [
   { path: 'update-instructor/:id', component: UpdateInstructorComponent, pathMatch: 'full' },
   { path: 'create-instructor', component: CreateInstructorComponent, pathMatch: 'full' },
   { path: 'view-all-instructors', component: ViewAllInstructorsComponent, pathMatch: 'full' },
+  { path: 'announcement/:id', component: AnnouncementComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

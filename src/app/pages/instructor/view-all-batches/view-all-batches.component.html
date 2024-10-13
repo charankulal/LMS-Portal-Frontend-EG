@@ -18,13 +18,16 @@
            
                 <mat-card-title class="text-center fs-4">{{ batch.name }}</mat-card-title>
         
-            <mat-card-content class="fs-6">
+            <mat-card-content class="fs-6 my-2">
                 <strong>Description: </strong><span>{{ batch.description }}</span>
             </mat-card-content>
-            <mat-card-actions class="actions offset-4">
-                <button mat-raised-button color="primary" (click)="viewBatch(batch.id)"matTooltip="View Batch">View</button>
+            <mat-card-actions class="actions offset-3 my-3">
+                <button mat-raised-button color="primary" (click)="viewBatch(batch.id)" matTooltip="View Batch">View</button>
                 <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)"matTooltip="Update Batch" >Update</button>
-                <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)"matTooltip="Delete Batch" >Delete</button>
+
+                <button mat-raised-button (click)="goToAnnouncement(batch.id)" matTooltip="Announce" class="mx-2" >Announce</button>
+                <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)" matTooltip="Delete Batch">Delete</button>
+                
             </mat-card-actions>
         </mat-card>
     </div>
