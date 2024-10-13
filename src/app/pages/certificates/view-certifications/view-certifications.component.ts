@@ -2,7 +2,7 @@ import { Location, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SprintService } from '../../../services/sprint.service';
 import { CertificateService } from '../../../services/certificate.service';
 import { LoginService } from '../../../services/login.service';
@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-view-certifications',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, NgFor, MatInputModule, MatFormFieldModule, MatIconModule],
+  imports: [MatCardModule, MatButtonModule, NgFor, MatInputModule, MatFormFieldModule, MatIconModule, RouterLink, RouterLinkActive],
   templateUrl: './view-certifications.component.html',
   styleUrl: './view-certifications.component.css'
 })
@@ -93,5 +93,9 @@ export class ViewCertificationsComponent implements OnInit{
   goToDashboard(){
     this.user = this.login.getUser()
     this.router.navigate([`instructor-dashboard/${this.user.id}`])
+  }
+  goToCreateCertificate()
+  {
+    this.router.navigate([`${this.route.snapshot.paramMap.get('id')}/create-certificate`])
   }
 }

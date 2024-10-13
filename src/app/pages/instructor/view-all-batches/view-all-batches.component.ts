@@ -94,4 +94,10 @@ export class ViewAllBatchesComponent implements OnInit{
   goToAnnouncement(id:any){
     this.router.navigate([`announcement/${id}`])
   }
+  goToCreateBatch(){
+    this.router.navigate([`create-batch`])
+  }
+  goToAttendance(id:any){
+    this.router.navigate([`attendance/${id}`])
+  }
 }

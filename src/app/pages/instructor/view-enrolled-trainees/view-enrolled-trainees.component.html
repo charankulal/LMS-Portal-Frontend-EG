@@ -1,8 +1,13 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <button mat-raised-button color="accent" id="ntb" (click)="goBack()">
-          <mat-icon>arrow_back</mat-icon> Back
-        </button>
+        <div>
+            <button mat-raised-button color="accent" class="mx-3" (click)="goToDashboard()">
+                <mat-icon>home</mat-icon>Go To Dashboard
+              </button>
+            <button mat-raised-button color="primary" (click)="goBack()">
+              <mat-icon>arrow_back</mat-icon> Back
+            </button>
+        </div>
   
         <form class="d-flex">
           <mat-form-field appearance="outline" class="me-2">
@@ -13,9 +18,10 @@
       </div>
     
     <div class="main-content">
-        <div class="btn">
-        <h2>All Enrolled Trainees</h2>
-    </div>
+       
+        @if (traineesToDisplay.length >0) {
+            <h2>All Enrolled Trainees</h2>
+    
         <table mat-table [dataSource]="traineesToDisplay" class="mat-elevation-z8"
             style="background-color: rgb(219, 226, 226); ">
             <ng-container matColumnDef="Sl No">
@@ -54,5 +60,12 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        }
+        @else {
+            <h3 class="text-center fs-3 mb-4">
+                No Trainees are enrolled in current batch
+                <a  class="text-primary" (click)="goToAddTrainee()">Click here</a> to add a new trainee.
+              </h3>
+        }
     </div>
 </div>

@@ -93,4 +93,7 @@ export class ViewPostsComponent implements OnInit {
     this.user = this.login.getUser()
     this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
+  goToCreatePost(){
+    this.router.navigate([`${this.route.snapshot.paramMap.get('id')}/create-post`])
+  }
 }

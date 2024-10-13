@@ -103,4 +103,7 @@ export class ViewSprintsComponent implements OnInit {
     this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 
+  gotoCreateSprint(){
+    this.router.navigate([`create-sprint/${this.route.snapshot.paramMap.get('id')}`])
+  }
 }

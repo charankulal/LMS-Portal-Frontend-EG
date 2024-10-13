@@ -38,6 +38,22 @@ export class AnnouncementComponent implements OnInit {
 
   formSubmit() {
     this.toggle = true
+    if (this.announcement.subject.trim() == '' || this.announcement.subject == null) {
+      this.snack.open("Please enter subject", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
+    if (this.announcement.message.trim() == '' || this.announcement.message == null) {
+      this.snack.open("Please enter message", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      })
+      return;
+    }
     this.postService.announceToTrainees(this.announcement).subscribe((data: any) => {
       this.snack.open("Message Sent Successfully!", 'OK', {
         duration: 3000,

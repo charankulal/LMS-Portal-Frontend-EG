@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Mark Attendance</h2>
+
+  
+    <!-- Display trainee list for selected batch -->
+    <table *ngIf="trainees.length > 0" class="table col-6">
+      <thead>
+        <tr>
+          <th>Trainee Name</th>
+          <th>Date</th>
+          <th>Attendance Remarks</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+            <tr *ngFor="let trainee of trainees">
+            
+                <td>{{ trainee.fullName }}</td>
+                <td>{{ currentDate | date: 'yyyy-MM-dd' }}</td>
+                <td>
+                  <button mat-raised-button color="primary" (click)="toggleAttendance(trainee)">
+                      {{ trainee.remarks === 'Present' ? 'Mark as Absent' : 'Mark as Present' }}
+                    </button>
+                </td>
+                
+                <td>
+                  <button mat-raised-button color="accent" (click)="markAttendance(trainee)">Submit</button>
+                </td>
+              </tr>
+        
+      </tbody>
+    </table>
+
+    <button mat-raised-button color="accent" (click)="downloadCSV()">Download Report</button>
+  </div>
+  

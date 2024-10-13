@@ -20,6 +20,7 @@ import { Location } from '@angular/common';
 export class AddTrainessComponent implements OnInit {
   trainees: any[] = [];
   traineesToDisplay: any[] = [];
+  user:any
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Email', 'Points', 'actions'];
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location: Location) { }
 
@@ -69,4 +70,8 @@ export class AddTrainessComponent implements OnInit {
     );
   }
 
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
+  }
 }
