@@ -20,6 +20,7 @@ import { Location } from '@angular/common';
 export class ViewEnrolledTraineesComponent implements OnInit {
   trainees: any[] = [];
   traineesToDisplay: any[] = [];
+  user:any
   displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
 
@@ -68,5 +69,14 @@ export class ViewEnrolledTraineesComponent implements OnInit {
     this.traineesToDisplay = this.trainees.filter(
       (sprint:any) => sprint?.fullName.toLowerCase().includes(text.toLowerCase())
     );
+  }
+
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
+  }
+
+  goToAddTrainee(){
+    this.router.navigate([`${this.route.snapshot.paramMap.get('id')}/add-trainees`])
   }
 }

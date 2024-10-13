@@ -16,7 +16,8 @@
           </mat-form-field>
         </form>
       </div>
-    <h2>View All Sprints</h2>
+    @if (sprintsToDisplay.length>0) {
+      <h2>View All Sprints</h2>
     <table mat-table [dataSource]="sprintsToDisplay" class="mat-elevation-z8">
         <ng-container matColumnDef="Sl No">
             <th mat-header-cell *matHeaderCellDef> Sl No </th>
@@ -62,4 +63,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    }
+    @else {
+      <h3 class="text-center fs-3 mb-4">
+        No Sprints are currently available! 
+        <a  class="text-primary" (click)="gotoCreateSprint()">Click here</a> to create a new sprint.
+      </h3>
+    }
 </div>

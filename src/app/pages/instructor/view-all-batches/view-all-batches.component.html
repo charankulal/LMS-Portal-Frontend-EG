@@ -1,47 +1,46 @@
 <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <button mat-raised-button color="accent" id="ntb" (click)="goToDashboard()">
-          <mat-icon>home</mat-icon> Dashboard
-        </button>
-  
-        <form class="d-flex">
-          <mat-form-field appearance="outline" class="me-2">
-            <mat-label>Search Batches</mat-label>
-            <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
-          </mat-form-field>
-        </form>
-      </div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <button mat-raised-button color="accent" id="ntb" (click)="goToDashboard()">
+      <mat-icon>home</mat-icon> Dashboard
+    </button>
+
+    <form class="d-flex">
+      <mat-form-field appearance="outline" class="me-2">
+        <mat-label>Search Batches</mat-label>
+        <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
+      </mat-form-field>
+    </form>
+  </div>
+  @if (batchesToDisplay.length>0) {
     <h2 class="text-center fs-2 my-4">All Batches Details</h2>
 
-    <div *ngFor="let batch of batchesToDisplay" class="mat-elevation-z8 my-3 offset-2 col-8">
-        <mat-card class="p-4 ">
-           
-                <mat-card-title class="text-center fs-4">{{ batch.name }}</mat-card-title>
-        
-            <mat-card-content class="fs-6 my-2">
-                <strong>Description: </strong><span>{{ batch.description }}</span>
-            </mat-card-content>
-            <mat-card-actions class="actions offset-3 my-3">
-                <button mat-raised-button color="primary" (click)="viewBatch(batch.id)" matTooltip="View Batch">View</button>
-                <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)"matTooltip="Update Batch" >Update</button>
+  <div *ngFor="let batch of batchesToDisplay" class="mat-elevation-z8 my-3 offset-2 col-8">
+    <mat-card class="p-4 ">
 
-                <button mat-raised-button (click)="goToAnnouncement(batch.id)" matTooltip="Announce" class="mx-2" >Announce</button>
-                <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)" matTooltip="Delete Batch">Delete</button>
-                
-            </mat-card-actions>
-        </mat-card>
-    </div>
-    
-        <!-- <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef class="header-cell"> Actions </th>
-            <td mat-cell *matCellDef="let batch" class="cell actions-cell">
-              <button mat-raised-button color="primary" (click)="viewBatch(batch.id)"matTooltip="View Batch">View</button>
-              <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)"matTooltip="Update Batch" >Update</button>
-              <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)"matTooltip="Delete Batch" >Delete</button>
-            </td>
-          </ng-container>
-        
-        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table> -->
+      <mat-card-title class="text-center fs-4">{{ batch.name }}</mat-card-title>
+
+      <mat-card-content class="fs-6 my-2">
+        <strong>Description: </strong><span>{{ batch.description }}</span>
+      </mat-card-content>
+      <mat-card-actions class="actions offset-2 my-3">
+        <button mat-raised-button color="primary" (click)="viewBatch(batch.id)" matTooltip="View Batch">View</button>
+        <button mat-stroked-button color="primary" class="mx-3" (click)="updateBatch(batch.id)"
+          matTooltip="Update Batch">Update</button>
+          <button mat-raised-button (click)="goToAttendance(batch.id)" matTooltip="Announce"
+          >Attendance</button>
+        <button mat-flat-button color="primary" (click)="goToAnnouncement(batch.id)" matTooltip="Attendance"
+          class="mx-2">Announce</button>
+        <button mat-flat-button color="accent" (click)="deleteBatch(batch.id)" matTooltip="Delete Batch">Delete</button>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  }
+  @else {
+    <h3 class="text-center fs-3 mb-4">
+      No Batches are currently available! 
+      <a  class="text-primary" (click)="goToCreateBatch()">Click here</a> to create a new batch.
+    </h3>
+  }
+
 </div>

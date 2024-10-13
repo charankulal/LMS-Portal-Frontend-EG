@@ -15,6 +15,7 @@
           </mat-form-field>
         </form>
       </div>
+      @if (postsToDisplay.length>0) {
     <h2>View All Posts in <b>{{sprint}}</b></h2>
 
     <div *ngFor="let post of postsToDisplay" class="mat-elevation-z8 m-3 ">
@@ -31,4 +32,11 @@
             </mat-card-actions>
         </mat-card>
     </div>
+  }
+  @else {
+    <h3 class="text-center fs-3 mb-4">
+      No Posts are currently available! 
+      <a  class="text-primary" (click)="goToCreatePost()">Click here</a> to create a new post.
+    </h3>
+  }
 </div>

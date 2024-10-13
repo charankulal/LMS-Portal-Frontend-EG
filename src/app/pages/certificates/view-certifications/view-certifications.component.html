@@ -16,7 +16,8 @@
       </mat-form-field>
     </form>
   </div>
-  <h2>View All Certificates in <b>{{sprint}}</b></h2>
+  @if (certificatesToDisplay.length>0) {
+    <h2>View All Certificates in <b>{{sprint}}</b></h2>
 
   <div *ngFor="let certificate of certificatesToDisplay" class="mat-elevation-z8 m-3 ">
     <mat-card class="p-4">
@@ -34,4 +35,11 @@
       </mat-card-actions>
     </mat-card>
   </div>
+  }
+  @else {
+    <h3 class="text-center fs-3 mb-4">
+      No certificates are currently available! 
+      <a  class="text-primary" (click)="goToCreateCertificate()">Click here</a> to create a new certificate.
+    </h3>
+  }
 </div>
