@@ -20,7 +20,7 @@ import { Location } from '@angular/common';
 export class ViewSprintComponent implements OnInit {
   sprint: any
   batch: any
-
+  user: any
   constructor(private sprintService: SprintService, private snack: MatSnackBar, private router: Router, private login: LoginService, private route: ActivatedRoute, private batchService: BatchService, private location:Location) { }
   ngOnInit(): void {
     // login and role validation : use login service
@@ -57,5 +57,8 @@ export class ViewSprintComponent implements OnInit {
   goBack(){
     this.location.back()
   }
-
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
+  }
 }

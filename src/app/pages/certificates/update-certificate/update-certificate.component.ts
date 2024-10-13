@@ -20,10 +20,10 @@ import { Location } from '@angular/common';
 })
 export class UpdateCertificateComponent implements OnInit {
   certificate: any=[]
+  user:any
   constructor(private route: ActivatedRoute, private login: LoginService, private router: Router, private certificateService: CertificateService, private snack: MatSnackBar, private location:Location) { }
   
   ngOnInit(): void {
-    // login and role validation : use login service
 
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
       this.login.logout()
@@ -63,5 +63,9 @@ export class UpdateCertificateComponent implements OnInit {
 
   goBack(){
     this.location.back()
+  }
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

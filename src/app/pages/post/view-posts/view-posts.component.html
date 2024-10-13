@@ -1,9 +1,13 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <button mat-raised-button color="accent" id="ntb" (click)="goBack()">
+      <div>
+      <button mat-raised-button color="accent" class="mx-3" (click)="goToDashboard()">
+        <mat-icon>home</mat-icon>Go To Dashboard
+      </button>
+        <button mat-raised-button color="primary" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon> Back
         </button>
-  
+      </div>
         <form class="d-flex">
           <mat-form-field appearance="outline" class="me-2">
             <mat-label>Search Posts</mat-label>

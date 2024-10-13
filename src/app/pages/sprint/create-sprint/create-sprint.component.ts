@@ -40,6 +40,8 @@ export class CreateSprintComponent implements OnInit {
     points:0
   }
 
+  user:any
+
   ngOnInit(): void {
     // TODO: login and authorization validation
     if (!this.login.isLoggedIn() || this.login.getUserRole() != "Instructor") {
@@ -69,5 +71,10 @@ export class CreateSprintComponent implements OnInit {
   }
   goBack(){
 this.location.back()
+  }
+
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 }

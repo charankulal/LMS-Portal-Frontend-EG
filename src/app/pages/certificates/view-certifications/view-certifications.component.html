@@ -1,31 +1,37 @@
 <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <button mat-raised-button color="accent" id="ntb" (click)="goBack()">
-          <mat-icon>arrow_back</mat-icon> Back
-        </button>
-  
-        <form class="d-flex">
-          <mat-form-field appearance="outline" class="me-2">
-            <mat-label>Search Certificates</mat-label>
-            <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
-          </mat-form-field>
-        </form>
-      </div>
-    <h2>View All Certificates in <b>{{sprint}}</b></h2>
-
-    <div *ngFor="let certificate of certificatesToDisplay" class="mat-elevation-z8 m-3 ">
-        <mat-card class="p-4">
-           
-                <mat-card-title>{{ certificate.name }}</mat-card-title>
-        
-            <mat-card-content>
-                <p><b>Description: </b>{{ certificate.description }}</p>
-                <button class="btn btn-outline-primary " disabled>{{certificate.points}} points</button>
-            </mat-card-content>
-            <mat-card-actions class="actions">
-                <button mat-raised-button color="primary" class="mb-2" (click)="updateCertificate(certificate.id)">Update</button>
-                <button mat-flat-button color="accent" (click)="deleteCertificate(certificate.id)">Delete</button>
-            </mat-card-actions>
-        </mat-card>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <button mat-raised-button color="accent" class="mx-3" (click)="goToDashboard()">
+        <mat-icon>home</mat-icon>Go To Dashboard
+      </button>
+    
+      <button mat-raised-button color="primary" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Back
+      </button>
     </div>
+    <form class="d-flex">
+      <mat-form-field appearance="outline" class="me-2">
+        <mat-label>Search Certificates</mat-label>
+        <input matInput type="text" placeholder="Search" (keyup)="filterResults(filter.value)" #filter>
+      </mat-form-field>
+    </form>
+  </div>
+  <h2>View All Certificates in <b>{{sprint}}</b></h2>
+
+  <div *ngFor="let certificate of certificatesToDisplay" class="mat-elevation-z8 m-3 ">
+    <mat-card class="p-4">
+
+      <mat-card-title>{{ certificate.name }}</mat-card-title>
+
+      <mat-card-content>
+        <p><b>Description: </b>{{ certificate.description }}</p>
+        <button class="btn btn-outline-primary " disabled>{{certificate.points}} points</button>
+      </mat-card-content>
+      <mat-card-actions class="actions">
+        <button mat-raised-button color="primary" class="mb-2"
+          (click)="updateCertificate(certificate.id)">Update</button>
+        <button mat-flat-button color="accent" (click)="deleteCertificate(certificate.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

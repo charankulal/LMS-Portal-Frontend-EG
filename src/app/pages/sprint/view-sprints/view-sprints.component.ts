@@ -25,7 +25,7 @@ export class ViewSprintsComponent implements OnInit {
   sprintsToDisplay:any[] = []
   batch: any
   constructor(private sprintService: SprintService, private snack: MatSnackBar, private router: Router, private login: LoginService, private route: ActivatedRoute, private batchService: BatchService, private location:Location) { }
-
+  user:any
   ngOnInit(): void {
     // login and role validation : use login service
 
@@ -96,6 +96,11 @@ export class ViewSprintsComponent implements OnInit {
     this.sprintsToDisplay = this.sprints.filter(
       (sprint:any) => sprint?.name.toLowerCase().includes(text.toLowerCase())
     );
+  }
+
+  goToDashboard(){
+    this.user = this.login.getUser()
+    this.router.navigate([`instructor-dashboard/${this.user.id}`])
   }
 
 }
