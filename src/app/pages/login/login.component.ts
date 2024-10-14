@@ -36,6 +36,14 @@ export class LoginComponent implements OnInit {
       })
       return;
     }
+    if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.loginData.email)) {
+      this.snack.open("Invalid Email", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      });
+      return;
+    }
     if (this.loginData.password.trim() == '' || this.loginData.password == null) {
       this.snack.open("Password is required!!", 'OK', {
         duration: 3000,

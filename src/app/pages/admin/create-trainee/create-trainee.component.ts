@@ -77,6 +77,14 @@ export class CreateTraineeComponent implements OnInit {
       })
       return;
     }
+    if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.userData.email)) {
+      this.snack.open("Invalid Email", 'OK', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
+      });
+      return;
+    }
     this.userService.createUser(this.userData).subscribe(
       (data: any) => {
         this.snack.open("New Trainee is created!!", 'OK', {
