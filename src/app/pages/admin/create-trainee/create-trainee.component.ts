@@ -92,6 +92,8 @@ export class CreateTraineeComponent implements OnInit {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
         })
+        this.toggle=false
+        this.router.navigate(['create-trainee'])
       }
     )
   }

@@ -8,12 +8,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-view-enrolled-trainees',
   standalone: true,
-  imports: [MatButtonModule, MatTableModule,MatIconModule,MatFormFieldModule,MatInputModule],
+  imports: [MatButtonModule, MatTableModule,MatIconModule,MatFormFieldModule,MatInputModule, MatProgressBarModule, NgIf],
   templateUrl: './view-enrolled-trainees.component.html',
   styleUrl: './view-enrolled-trainees.component.css'
 })
@@ -21,7 +22,8 @@ export class ViewEnrolledTraineesComponent implements OnInit {
   trainees: any[] = [];
   traineesToDisplay: any[] = [];
   user:any
-  displayedColumns: string[] = ["Sl No", 'Full Name', 'Password', 'Email', 'Points', 'actions'];
+  toggle=false
+  displayedColumns: string[] = ["Sl No", 'Full Name', 'Email', 'Points', 'actions'];
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private login: LoginService, private snack: MatSnackBar, private location:Location) { }
 
   ngOnInit(): void {
@@ -41,15 +43,19 @@ export class ViewEnrolledTraineesComponent implements OnInit {
   }
 
   removeTrainee(id:any){
+    this.toggle=true
     this.userService.removeTraineeFromBatch(this.route.snapshot.paramMap.get('id'),id).subscribe(
       (data:any)=>{
         this.trainees = this.trainees.filter((batch:any)=> batch.id!=id)
+        this.traineesToDisplay = this.traineesToDisplay.filter((batch:any)=> batch.id!=id)
         this.snack.open("Trainee Removed from batch successfully!", 'OK', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
         })
+        this.toggle=false
       },(error)=>{
+        this.toggle=false
         this.snack.open("Internal server error", 'OK', {
           duration: 3000,
           verticalPosition: 'bottom',
@@ -79,4 +85,5 @@ export class ViewEnrolledTraineesComponent implements OnInit {
   goToAddTrainee(){
     this.router.navigate([`${this.route.snapshot.paramMap.get('id')}/add-trainees`])
   }
+  
 }
