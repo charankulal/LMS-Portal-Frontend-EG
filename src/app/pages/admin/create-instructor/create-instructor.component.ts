@@ -90,6 +90,8 @@ export class CreateInstructorComponent implements OnInit{
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
         })
+        this.toggle=false
+        this.router.navigate(['create-instructor'])
       }
     )
   }
