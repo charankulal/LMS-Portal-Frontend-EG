@@ -68,7 +68,14 @@ formSubmit(){
     })
     return;
   }
-  
+  if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.userData.email)) {
+    this.snack.open("Invalid Email", 'OK', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
+    return;
+  }
   this.userService.updateInstructor(this.route.snapshot.paramMap.get('id'),this.userData).subscribe(
     (data:any)=>{
       this.snack.open("Instructor Details updated successfully!!", 'OK', {
