@@ -69,6 +69,18 @@ formSubmit(){
     })
     return;
   }
+  if (this.userData.password.length <8 || 
+    !/[A-Za-z]/.test(this.userData.password) ||
+    !/[0-9]/.test(this.userData.password) ||     
+    !/[!@#$%&*]/.test(this.userData.password) 
+) {
+  this.snack.open("Password must be at least 8 characters long, and include letters, numbers, and special characters.", 'OK', {
+    duration: 3000,
+    verticalPosition: 'bottom',
+    horizontalPosition: 'center',
+  });
+  return;
+}
   if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(this.userData.email)) {
     this.snack.open("Invalid Email", 'OK', {
       duration: 3000,
